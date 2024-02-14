@@ -210,7 +210,7 @@ int num_fotos (int &usadas, int &modificadas)
 
 void nueva_desde_portapaples(int nfoto, QImage& imagen) {
     Mat img(imagen.height(), imagen.width(), CV_8UC4, imagen.scanLine(0));
-    cvtColor(img, img, COLOR_RGBA2BGR);
+    cvtColor(img, img, COLOR_BGRA2BGR);
     crear_nueva(nfoto, img);
 }
 
