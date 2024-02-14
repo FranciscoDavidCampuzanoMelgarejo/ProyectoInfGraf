@@ -208,6 +208,14 @@ int num_fotos (int &usadas, int &modificadas)
 
 //---------------------------------------------------------------------------
 
+void nueva_desde_portapaples(int nfoto, QImage& imagen) {
+    Mat img(imagen.height(), imagen.width(), CV_8UC4, imagen.scanLine(0));
+    cvtColor(img, img, COLOR_RGBA2BGR);
+    crear_nueva(nfoto, img);
+}
+
+
+
 void set_callback_foto (int nfoto, bool activo)
 {
     assert(nfoto>=0 && nfoto<MAX_VENTANAS && foto[nfoto].usada);

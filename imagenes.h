@@ -2,6 +2,7 @@
 #define IMAGENES_H
 
 #include <string>
+#include <QImage>
 using namespace std;
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -116,6 +117,9 @@ int num_fotos (int &usadas, int &modificadas);
 void set_callback_foto (int nfoto, bool activo);
 // Activa y desactiva el callback por defecto de una ventana,
 // según el valor del parámetro activo
+
+void nueva_desde_portapaples(int nfoto, QImage& imagen);
+// Abrir la imagen 'imagen' guardada en el portapapeles -> Convertir QImage a Mat
 
 ///////////////////////////////////////////////////////////////////
 /////////  FUNCIONES DE PROCESAMIENTO DE IMAGENES    //////////////

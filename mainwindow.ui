@@ -397,6 +397,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionNueva_imagen"/>
     <addaction name="actionAbrir_imagen"/>
+    <addaction name="actionAbrir_imagen_del_portapapeles"/>
     <addaction name="actionCapturar_de_c_mara"/>
     <addaction name="actionCapturar_de_v_deo"/>
     <addaction name="separator"/>
@@ -736,6 +737,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionCopiar_con_efectos">
    <property name="text">
     <string>Copiar con efectos...</string>
+   </property>
+  </action>
+  <action name="actionAbrir_imagen_del_portapapeles">
+   <property name="text">
+    <string>Abrir imagen del portapapeles</string>
    </property>
   </action>
  </widget>

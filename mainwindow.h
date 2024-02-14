@@ -79,6 +79,7 @@ private slots:
     void on_actionConvolucion_triggered();
     void on_actionPerspectiva_triggered();
     void on_actionCopiar_con_efectos_triggered();
+    void on_actionAbrir_imagen_del_portapapeles_triggered();
 };
 
 extern MainWindow *w;

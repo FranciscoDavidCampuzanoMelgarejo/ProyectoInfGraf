@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QColorDialog>
 #include <QMessageBox>
+#include <QClipboard>
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -468,4 +469,20 @@ void MainWindow::on_actionCopiar_con_efectos_triggered()
 {
     copiar_efectos ce;
     ce.exec();
+}
+
+void MainWindow::on_actionAbrir_imagen_del_portapapeles_triggered()
+{
+    if(primera_libre() != -1) {
+        QClipboard *clipboard = QApplication::clipboard();
+        QImage imagen = clipboard->image();
+
+        if(imagen.isNull()) {
+            QMessageBox::warning(nullptr, "Portapeles sin imagen", "No hay imagen en el portapapeles");
+            return;
+        }
+
+        nueva_desde_portapaples(primera_libre(), imagen);
+
+    }
 }
