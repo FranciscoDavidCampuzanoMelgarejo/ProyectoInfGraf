@@ -871,6 +871,22 @@ QImage copiar_al_portapapeles(int nfoto) {
     return imagen;
 }
 
+//--------------------------------------------------------------------------
+
+QVector<QString> ver_informacion(int nfoto) {
+    Mat imagen = foto[nfoto].img;
+    QString ancho = QString::number(imagen.cols);
+    QString alto = QString::number(imagen.rows);
+    QString profundidad = QString::number(imagen.depth());
+    QString canales = QString::number(imagen.channels());
+    QString memoria = QString::number(imagen.total() * imagen.elemSize());
+
+    Scalar colorMedio = mean(imagen);
+    QString RGBMedio = QString::number((int)colorMedio[2]) + " " + QString::number((int)colorMedio[1]) + " " + QString::number((int)colorMedio[0]); // BGR -> RGB
+
+    return {ancho, alto, profundidad, canales, memoria, RGBMedio};
+}
+
 //---------------------------------------------------------------------------
 
 void ver_ajuste_lineal(int nfoto, double pmin, double pmax, bool guardar) {

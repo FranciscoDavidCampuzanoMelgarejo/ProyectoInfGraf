@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QImage>
+#include <QString>
 using namespace std;
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -180,6 +181,9 @@ void copiar_a_nueva(int nfoto, int nres);
 QImage copiar_al_portapapeles(int nfoto);
 // Copia el ROI de la imagen nfoto, convirtiendola en QImage
 // para poder copiar en el portapapeles
+
+QVector<QString> ver_informacion(int nfoto);
+// Devuelve informacion de la foto activa (ancho, alto, profundidad, canales, memoria, media RGB,...)
 
 void ver_ajuste_lineal(int nfoto, double pmin, double pmax, bool guardar = false);
 // Operacion de ajuste lineal del histograma con percentiles

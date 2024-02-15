@@ -20,6 +20,7 @@ SOURCES += main.cpp\
     capturarvideo.cpp \
     convolucion.cpp \
     copiar_efectos.cpp \
+    informacionimagen.cpp \
     mainwindow.cpp \
     imagenes.cpp \
     dialognueva.cpp \
@@ -43,6 +44,7 @@ HEADERS  += mainwindow.h \
     imagenes.h \
     dialognueva.h \
     brillocontraste.h \
+    informacionimagen.h \
     mat_sat_lum.h \
     perspectiva.h \
     pinchar_estirar.h \
@@ -61,6 +63,7 @@ FORMS    += mainwindow.ui \
     copiar_efectos.ui \
     dialognueva.ui \
     brillocontraste.ui \
+    informacionimagen.ui \
     mat_sat_lum.ui \
     perspectiva.ui \
     pinchar_estirar.ui \

@@ -4,6 +4,7 @@
 #include <QColorDialog>
 #include <QMessageBox>
 #include <QClipboard>
+#include <QDebug>
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -25,6 +26,7 @@ using namespace cv;
 #include "convolucion.h"
 #include "perspectiva.h"
 #include "copiar_efectos.h"
+#include "informacionimagen.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -498,4 +500,19 @@ void MainWindow::on_actionCopiar_al_portapapeles_triggered()
     QImage imagen = copiar_al_portapapeles(foto_activa());
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setImage(imagen);
+}
+
+void MainWindow::on_actionVer_informacion_triggered()
+{
+    if(foto_activa() == -1) {
+        QMessageBox::warning(nullptr, "SIN FOTOS", "No se ha creado ninguna foto");
+        return;
+    }
+
+    QVector<QString> informacion = ver_informacion(foto_activa());
+    if(!informacion.empty()) {
+        InformacionImagen infoImage(informacion);
+        infoImage.exec();
+    }
+
 }
