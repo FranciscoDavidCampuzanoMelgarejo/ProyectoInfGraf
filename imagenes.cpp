@@ -864,6 +864,15 @@ void copiar_a_nueva(int nfoto, int nres) {
 
 //---------------------------------------------------------------------------
 
+QImage copiar_al_portapapeles(int nfoto) {
+    Mat trozo = foto[nfoto].img(foto[nfoto].roi).clone();
+    cvtColor(trozo, trozo, COLOR_BGR2RGB); // Mat -> BGR; QImage -> RGB
+    QImage imagen(trozo.data, trozo.cols, trozo.rows, QImage::Format_RGB888);
+    return imagen;
+}
+
+//---------------------------------------------------------------------------
+
 void ver_ajuste_lineal(int nfoto, double pmin, double pmax, bool guardar) {
     Mat gris;
     cvtColor(foto[nfoto].img, gris, COLOR_BGR2GRAY);

@@ -482,7 +482,20 @@ void MainWindow::on_actionAbrir_imagen_del_portapapeles_triggered()
             return;
         }
 
+
         nueva_desde_portapaples(primera_libre(), imagen);
 
     }
+}
+
+void MainWindow::on_actionCopiar_al_portapapeles_triggered()
+{
+    if(foto_activa() == -1) {
+        QMessageBox::warning(nullptr, "SIN FOTOS", "No se ha creado ninguna foto");
+        return;
+    }
+
+    QImage imagen = copiar_al_portapapeles(foto_activa());
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setImage(imagen);
 }

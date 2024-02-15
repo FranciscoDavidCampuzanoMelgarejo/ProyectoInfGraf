@@ -177,6 +177,10 @@ void copiar_a_nueva(int nfoto, int nres);
 // Copia el ROI de la imagen nfoto, creando una nueva
 // en nres
 
+QImage copiar_al_portapapeles(int nfoto);
+// Copia el ROI de la imagen nfoto, convirtiendola en QImage
+// para poder copiar en el portapapeles
+
 void ver_ajuste_lineal(int nfoto, double pmin, double pmax, bool guardar = false);
 // Operacion de ajuste lineal del histograma con percentiles
 // pmin y pmax
