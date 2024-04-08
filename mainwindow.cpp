@@ -516,3 +516,14 @@ void MainWindow::on_actionVer_informacion_triggered()
     }
 
 }
+
+void MainWindow::on_toolButton_10_clicked()
+{
+    herr_actual = HER_TRAZO;
+}
+
+void MainWindow::on_actionTrazo_triggered()
+{
+    herr_actual = HER_TRAZO;
+    ui->toolButton_10->setChecked(true);
+}

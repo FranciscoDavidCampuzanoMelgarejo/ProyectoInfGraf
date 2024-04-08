@@ -274,7 +274,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QToolButton" name="toolButton_6">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>370</x>
       <y>0</y>
       <width>41</width>
       <height>41</height>
@@ -319,7 +319,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QToolButton" name="toolButton_7">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>250</x>
       <y>0</y>
       <width>41</width>
       <height>41</height>
@@ -342,7 +342,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QToolButton" name="toolButton_8">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>290</x>
       <y>0</y>
       <width>41</width>
       <height>41</height>
@@ -365,7 +365,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QToolButton" name="toolButton_9">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>330</x>
       <y>0</y>
       <width>41</width>
       <height>41</height>
@@ -373,6 +373,29 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>ArcoIris</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_10">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/lapiz.png</normaloff>:/imagenes/lapiz.png</iconset>
     </property>
     <property name="checkable">
      <bool>true</bool>
@@ -441,6 +464,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionPunto"/>
     <addaction name="actionLinea"/>
+    <addaction name="actionTrazo"/>
     <addaction name="actionRect_ngulo"/>
     <addaction name="actionElipse"/>
     <addaction name="actionArco_Iris"/>
@@ -754,6 +778,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionVer_informacion">
    <property name="text">
     <string>Ver informacion</string>
+   </property>
+  </action>
+  <action name="actionTrazo">
+   <property name="text">
+    <string>Trazo</string>
    </property>
   </action>
  </widget>

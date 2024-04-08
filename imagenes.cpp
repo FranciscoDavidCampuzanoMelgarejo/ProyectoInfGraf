@@ -557,6 +557,17 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
             ninguna_accion(factual, x, y);
         break;
 
+    case HER_TRAZO:
+        if(event == EVENT_LBUTTONUP)
+            cb_linea(factual, x, y);
+        else if (event == EVENT_MOUSEMOVE && flags == EVENT_FLAG_LBUTTON) {
+            cb_linea(factual, x, y);
+            downx = x;
+            downy = y;
+        } else
+            ninguna_accion(factual, x, y);
+        break;
+
         // 2.3. Herramienta SELECCION
     case HER_SELECCION:
         if (event==EVENT_LBUTTONUP)
