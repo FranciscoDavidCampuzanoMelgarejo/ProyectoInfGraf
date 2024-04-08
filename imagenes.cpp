@@ -826,7 +826,7 @@ void ver_bajorrelieve(int nfoto, int nres, double angulo, double grado, int nfon
 //---------------------------------------------------------------------------
 void ver_histograma(int nfoto, int canal, int nres) {
     QImage imq = QImage(":/imagenes/histbase.png");
-    Mat img(imq.width(), imq.height(), CV_8UC4, imq.scanLine(0));
+    Mat img(imq.height(), imq.width(), CV_8UC4, imq.scanLine(0));
     cvtColor(img, img, COLOR_RGBA2RGB);
 
     Mat gris;
