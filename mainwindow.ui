@@ -404,6 +404,29 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButton_11">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/paint-bucket.png</normaloff>:/imagenes/paint-bucket.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -465,6 +488,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionPunto"/>
     <addaction name="actionLinea"/>
     <addaction name="actionTrazo"/>
+    <addaction name="actionRellenar"/>
     <addaction name="actionRect_ngulo"/>
     <addaction name="actionElipse"/>
     <addaction name="actionArco_Iris"/>
@@ -783,6 +807,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionTrazo">
    <property name="text">
     <string>Trazo</string>
+   </property>
+  </action>
+  <action name="actionRellenar">
+   <property name="text">
+    <string>Rellenar</string>
    </property>
   </action>
  </widget>

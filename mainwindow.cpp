@@ -527,3 +527,14 @@ void MainWindow::on_actionTrazo_triggered()
     herr_actual = HER_TRAZO;
     ui->toolButton_10->setChecked(true);
 }
+
+void MainWindow::on_toolButton_11_clicked()
+{
+    herr_actual = HER_RELLENADO;
+}
+
+void MainWindow::on_actionRellenar_triggered()
+{
+    herr_actual = HER_RELLENADO;
+    ui->toolButton_11->setChecked(true);
+}

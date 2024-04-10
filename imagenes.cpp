@@ -8,6 +8,8 @@
 #include <QFileDialog>
 #include <assert.h>
 
+#include <QDebug>
+
 ///////////////////////////////////////////////////////////////////
 /////////  VARIABLES GLOBALES                        //////////////
 ///////////////////////////////////////////////////////////////////
@@ -513,6 +515,32 @@ void cb_ver_seleccion (int factual, int x, int y, bool foto_roi)
 
 //---------------------------------------------------------------------------
 
+// Funcion que se encarga de aplicar el rellenado (floodFill) sobre una imagen
+// Por defecto se aplica sobre la copia (visualizacion)
+void cb_rellenado(int factual, int x, int y, bool isAplicado = false) {
+    double factorTolerancia = radio_pincel / 120.0;
+    double factorOpacidad = difum_pincel / 120.0;
+
+    Scalar lowDiff = Scalar::all(10 * factorTolerancia);
+    Scalar upDiff = Scalar::all(30 * factorTolerancia);
+
+    Mat imagen = foto[factual].img;
+    //Mat mask(imagen.rows + 2, imagen.cols + 2, CV_8UC1, Scalar::all(0));
+    Mat imagenRelleno = imagen.clone();
+    if(!isAplicado) {
+        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff);
+        addWeighted(imagen, factorOpacidad, imagenRelleno, (1.0 - factorOpacidad), 0, imagenRelleno);
+        imshow(foto[factual].nombre, imagenRelleno);
+    } else {
+        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff);
+        addWeighted(imagen, factorOpacidad, imagenRelleno, (1.0 - factorOpacidad), 0, imagen);
+        imshow(foto[factual].nombre, imagen);
+        foto[factual].modificada = true;
+    }
+}
+
+//---------------------------------------------------------------------------
+
 void callback (int event, int x, int y, int flags, void *_nfoto)
 {
     int factual= reinterpret_cast<int>(_nfoto);
@@ -602,6 +630,16 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
                 cb_arco_iris(factual, x, y);
             else
                 ninguna_accion(factual, x, y);
+            break;
+
+        case HER_RELLENADO:
+            if(event == EVENT_MOUSEMOVE) {
+                cb_rellenado(factual, x, y);
+            } else if (event == EVENT_LBUTTONDOWN) {
+                cb_rellenado(factual, x, y, true);
+            } else {
+                ninguna_accion(factual, x, y);
+            }
             break;
     }
     escribir_barra_estado();
