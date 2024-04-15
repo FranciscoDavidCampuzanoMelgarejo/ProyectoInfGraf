@@ -86,6 +86,8 @@ private slots:
     void on_actionTrazo_triggered();
     void on_toolButton_11_clicked();
     void on_actionRellenar_triggered();
+    void on_toolButton_12_clicked();
+    void on_actionSuavizado_triggered();
 };
 
 extern MainWindow *w;

@@ -292,7 +292,6 @@ void cb_punto (int factual, int x, int y)
         Mat res(roi.size(), im.type(), color_pincel);
         Mat cop(roi.size(), im.type(), CV_RGB(0,0,0));
         circle(cop, Point(posx, posy), radio_pincel, CV_RGB(255,255,255), -1, LINE_AA);
-        imshow("Mascara", cop);
         blur(cop, cop, Size(difum_pincel*2+1, difum_pincel*2+1));
         multiply(res, cop, res, 1.0/255.0);
         bitwise_not(cop, cop);
@@ -541,6 +540,53 @@ void cb_rellenado(int factual, int x, int y, bool isAplicado = false) {
 }
 
 //---------------------------------------------------------------------------
+void cb_suavizado(int factual, int x, int y) {
+    Mat imagen = foto[factual].img;
+
+    int suavizado = (difum_pincel % 2 == 0) ? difum_pincel+1 : difum_pincel;
+
+    Rect roi(x - radio_pincel, y - radio_pincel, 2*radio_pincel+1, 2*radio_pincel+1);
+
+    int posx = radio_pincel;
+    int posy = radio_pincel;
+
+    if(roi.x < 0) {
+        roi.width = roi.width + x;
+        posx = posx + roi.x;
+        roi.x = 0;
+    }
+
+    if(roi.y < 0) {
+        roi.height = roi.height + y;
+        posy = posy + roi.y;
+        roi.y = 0;
+    }
+
+    if(roi.x + roi.width > imagen.cols) {
+        roi.width = imagen.cols - roi.x;
+    }
+
+    if(roi.y + roi.height > imagen.rows) {
+        roi.height = imagen.rows - roi.y;
+    }
+
+    Mat trozo = imagen(roi);
+    Mat copiaTrozo = trozo.clone();
+    Mat mascara(roi.size(), imagen.type(), CV_RGB(0, 0, 0));
+
+    circle(mascara, Point(posx, posy), radio_pincel, CV_RGB(255, 255, 255), -1, LINE_AA);
+    GaussianBlur(copiaTrozo, copiaTrozo, Size(suavizado, suavizado), 0, 0, BORDER_DEFAULT);
+
+    multiply(copiaTrozo, mascara, copiaTrozo, 1.0/255.0);
+    bitwise_not(mascara, mascara);
+    multiply(trozo, mascara, trozo, 1.0/255.0);
+    trozo = trozo + copiaTrozo;
+
+    imshow(foto[factual].nombre, imagen);
+    foto[factual].modificada = true;
+}
+
+//---------------------------------------------------------------------------
 
 void callback (int event, int x, int y, int flags, void *_nfoto)
 {
@@ -642,6 +688,14 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
                 ninguna_accion(factual, x, y);
             }
             break;
+
+        case HER_SUAVIZADO:
+        if(event == EVENT_LBUTTONDOWN) {
+            cb_suavizado(factual, x, y);
+        } else {
+            ninguna_accion(factual, x, y);
+        }
+        break;
     }
     escribir_barra_estado();
 }

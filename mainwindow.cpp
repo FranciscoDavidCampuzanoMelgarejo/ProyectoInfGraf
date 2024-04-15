@@ -538,3 +538,14 @@ void MainWindow::on_actionRellenar_triggered()
     herr_actual = HER_RELLENADO;
     ui->toolButton_11->setChecked(true);
 }
+
+void MainWindow::on_toolButton_12_clicked()
+{
+    herr_actual = HER_SUAVIZADO;
+}
+
+void MainWindow::on_actionSuavizado_triggered()
+{
+    herr_actual = HER_SUAVIZADO;
+    ui->toolButton_12->setChecked(true);
+}

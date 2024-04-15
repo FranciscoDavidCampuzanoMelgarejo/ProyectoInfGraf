@@ -20,5 +20,6 @@
         <file>imagenes/madera.jpg</file>
         <file>imagenes/lapiz.png</file>
         <file>imagenes/paint-bucket.png</file>
+        <file>imagenes/suavizado.png</file>
     </qresource>
 </RCC>
