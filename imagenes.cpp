@@ -292,6 +292,7 @@ void cb_punto (int factual, int x, int y)
         Mat res(roi.size(), im.type(), color_pincel);
         Mat cop(roi.size(), im.type(), CV_RGB(0,0,0));
         circle(cop, Point(posx, posy), radio_pincel, CV_RGB(255,255,255), -1, LINE_AA);
+        imshow("Mascara", cop);
         blur(cop, cop, Size(difum_pincel*2+1, difum_pincel*2+1));
         multiply(res, cop, res, 1.0/255.0);
         bitwise_not(cop, cop);
