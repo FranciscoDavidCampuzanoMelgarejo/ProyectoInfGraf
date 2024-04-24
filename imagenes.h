@@ -43,7 +43,7 @@ struct ventana {
 //    que se pueden usar. Añadir nuevas aquí
 
 enum tipo_herramienta {HER_PUNTO, HER_LINEA, HER_SELECCION, HER_RECTANGULO, HER_ELIPSE, HER_ARCO_IRIS,
-                       HER_TRAZO, HER_RELLENADO, HER_SUAVIZADO};
+                       HER_TRAZO, HER_RELLENADO, HER_SUAVIZADO, HER_COPIA};
 
 
 ///////////////////////////////////////////////////////////////////
@@ -68,6 +68,9 @@ extern int difum_pincel;
 
 extern bool preguntar_guardar;
 // Al cerrar una imagen modificada, preguntar si se guarda o no
+
+// Al seleccionar la herramienta de copia, guardar
+// un clon de la imagen que se usa para copiar
 
 ///////////////////////////////////////////////////////////////////
 /////////  FUNCIONES DE MANEJO DE VENTANAS           //////////////
@@ -206,5 +209,9 @@ void media_ponderada (int nf1, int nf2, int nueva, double peso);
 
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1
+
+void liberar_copia();
+// Liberar de memoria la copia guardada de la foto que ha sido seleccionada
+// con la herramienta de COPIA
 
 #endif // IMAGENES_H

@@ -21,5 +21,6 @@
         <file>imagenes/lapiz.png</file>
         <file>imagenes/paint-bucket.png</file>
         <file>imagenes/suavizado.png</file>
+        <file>imagenes/copiar-roi.png</file>
     </qresource>
 </RCC>

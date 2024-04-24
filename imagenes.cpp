@@ -28,6 +28,32 @@ bool preguntar_guardar= true;
 
 static int numpos= 0; // Número actual en el orden de posición de las ventanas
 
+
+// FUNCIONES AUXILIARES
+void ajustarROICopia(Rect &roi, int &posx, int &posy, int factual) {
+    Mat imagen = foto[factual].img;
+    if(roi.x < 0) {
+        posx = posx + roi.x;
+        roi.x = 0;
+    }
+
+    if(roi.y < 0) {
+        posy = posy + roi.y;
+        roi.y = 0;
+    }
+
+    if(roi.x + roi.width > imagen.cols) {
+        posx = roi.x - (imagen.cols - roi.width) + posx;
+        roi.x = imagen.cols - roi.width;
+    }
+
+    if(roi.y + roi.height > imagen.rows) {
+        posy = roi.y - (imagen.rows - roi.height) + posy;
+        roi.y = imagen.rows - roi.height;
+    }
+}
+
+
 ///////////////////////////////////////////////////////////////////
 /////////  FUNCIONES DE MANEJO DE VENTANAS           //////////////
 ///////////////////////////////////////////////////////////////////
@@ -233,6 +259,15 @@ void set_callback_foto (int nfoto, bool activo)
 
 static int downx, downy;
 // Posición inicial del ratón al pinchar sobre la imagen actual
+
+// Foto 'original' de la que se copian trozos a otras fotos con la herramienta COPIA
+static Mat* fotoOrigenCopia = nullptr;
+
+// Para saber si se ha copiado una foto o todavia no
+static bool isCopiado = false;
+
+// Coordenadas (x,y) del click que se hizo en la foto cuyos trozos se van a copiar a otras fotos
+static int xOrigen, yOrigen;
 
 //---------------------------------------------------------------------------
 
@@ -588,6 +623,41 @@ void cb_suavizado(int factual, int x, int y) {
 
 //---------------------------------------------------------------------------
 
+void cb_copia(int factual, int x, int y) {
+    if(!isCopiado) {
+        xOrigen = x;
+        yOrigen = y;
+        isCopiado = true;
+        fotoOrigenCopia = new Mat(foto[factual].img.clone());
+    } else {
+        int suavizado = (difum_pincel % 2 == 0) ? difum_pincel+1 : difum_pincel;
+        int posxOrigen, posyOrigen;
+        int posxCopia, posyCopia;
+        posxOrigen = posyOrigen = posxCopia = posyCopia = radio_pincel;
+        Rect roiOrigen(xOrigen - radio_pincel, yOrigen - radio_pincel, 2*radio_pincel+1, 2*radio_pincel+1);
+        Rect roiCopia(x - radio_pincel, y - radio_pincel, 2*radio_pincel+1, 2*radio_pincel+1);
+
+        // Ajustar los ROI
+        ajustarROICopia(roiOrigen, posxOrigen, posyOrigen, factual);
+        ajustarROICopia(roiCopia, posxCopia, posyCopia, factual);
+
+        Mat origen = (*fotoOrigenCopia)(roiOrigen).clone();
+        blur(origen, origen, Size(suavizado, suavizado));
+
+        Mat destino = foto[factual].img(roiCopia);
+        Mat mascara(roiCopia.size(), destino.type(), CV_RGB(0, 0, 0));
+        circle(mascara, Point(posxCopia, posyCopia), radio_pincel, CV_RGB(255, 255, 255), -1, LINE_AA);
+
+        multiply(origen, mascara, origen, 1.0/255.0);
+        bitwise_not(mascara, mascara);
+        multiply(destino, mascara, destino, 1.0/255.0);
+        destino = destino + origen;
+        foto[factual].modificada = true;
+    }
+    imshow(foto[factual].nombre, foto[factual].img);
+}
+//---------------------------------------------------------------------------
+
 void callback (int event, int x, int y, int flags, void *_nfoto)
 {
     int factual= reinterpret_cast<int>(_nfoto);
@@ -609,6 +679,12 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
     if (event==EVENT_LBUTTONDOWN) {
         downx= x;
         downy= y;
+    }
+
+    if(fotoOrigenCopia != nullptr && herr_actual != HER_COPIA) {
+        delete fotoOrigenCopia;
+        fotoOrigenCopia = nullptr;
+        isCopiado = false;
     }
 
     // 2. Según la herramienta actual
@@ -696,6 +772,13 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
             ninguna_accion(factual, x, y);
         }
         break;
+
+        case HER_COPIA:
+            if(event == EVENT_LBUTTONDOWN) {
+                cb_copia(factual, x, y);
+            } else {
+                ninguna_accion(factual, x, y);
+            }
     }
     escribir_barra_estado();
 }
@@ -1103,3 +1186,14 @@ string Lt1(string cadena)
 }
 
 //---------------------------------------------------------------------------
+
+void liberar_copia() {
+    qDebug("Liberando la copia");
+    if(fotoOrigenCopia != nullptr) {
+        delete fotoOrigenCopia;
+        fotoOrigenCopia = nullptr;
+    }
+
+    isCopiado = false;
+}
+

@@ -88,6 +88,8 @@ private slots:
     void on_actionRellenar_triggered();
     void on_toolButton_12_clicked();
     void on_actionSuavizado_triggered();
+    void on_toolButton_13_clicked();
+    void on_actionCopiar_triggered();
 };
 
 extern MainWindow *w;
