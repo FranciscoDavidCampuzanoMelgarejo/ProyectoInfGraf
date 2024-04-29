@@ -682,9 +682,7 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
     }
 
     if(fotoOrigenCopia != nullptr && herr_actual != HER_COPIA) {
-        delete fotoOrigenCopia;
-        fotoOrigenCopia = nullptr;
-        isCopiado = false;
+        liberar_copia();
     }
 
     // 2. Según la herramienta actual
@@ -1149,6 +1147,25 @@ void ver_mat_sat_lum(int nfoto, double sat, double lum, int matiz, bool guardar)
 
 //---------------------------------------------------------------------------
 
+void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_canales, bool guardar) {
+    Mat imagen = foto[nfoto].img.clone();
+    Mat canales[num_canales];
+
+    split(imagen, canales);
+    for(int i = 0; i < num_canales; i++) {
+        canales[i] = canales[i].mul(producto[i]) + suma[i];
+    }
+    merge(canales, num_canales, imagen);
+
+    if(guardar) {
+        imagen.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada = true;
+    }
+    imshow(foto[nfoto].nombre, imagen);
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;
@@ -1188,8 +1205,8 @@ string Lt1(string cadena)
 //---------------------------------------------------------------------------
 
 void liberar_copia() {
-    qDebug("Liberando la copia");
     if(fotoOrigenCopia != nullptr) {
+        qDebug("Liberando la copia");
         delete fotoOrigenCopia;
         fotoOrigenCopia = nullptr;
     }

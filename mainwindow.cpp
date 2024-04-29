@@ -27,6 +27,7 @@ using namespace cv;
 #include "perspectiva.h"
 #include "copiar_efectos.h"
 #include "informacionimagen.h"
+#include "rojo_verde_azul.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -577,4 +578,12 @@ void MainWindow::on_actionCopiar_triggered()
 {
     herr_actual = HER_COPIA;
     ui->toolButton_13->setChecked(true);
+}
+
+void MainWindow::on_actionAjuste_Rojo_Verde_Azul_triggered()
+{
+    if(foto_activa() != 1) {
+        rojo_verde_azul aj_rgb(foto_activa(), this);
+        aj_rgb.exec();
+    }
 }

@@ -28,6 +28,7 @@ SOURCES += main.cpp\
     mat_sat_lum.cpp \
     perspectiva.cpp \
     pinchar_estirar.cpp \
+    rojo_verde_azul.cpp \
     suavizados.cpp \
     video.cpp \
     rotaravideo.cpp \
@@ -48,6 +49,7 @@ HEADERS  += mainwindow.h \
     mat_sat_lum.h \
     perspectiva.h \
     pinchar_estirar.h \
+    rojo_verde_azul.h \
     suavizados.h \
     video.h \
     rotaravideo.h \
@@ -67,6 +69,7 @@ FORMS    += mainwindow.ui \
     mat_sat_lum.ui \
     perspectiva.ui \
     pinchar_estirar.ui \
+    rojo_verde_azul.ui \
     suavizados.ui \
     rotaravideo.ui \
     mediaponderada.ui \

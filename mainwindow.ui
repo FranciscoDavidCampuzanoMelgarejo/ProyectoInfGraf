@@ -556,6 +556,7 @@ p, li { white-space: pre-wrap; }
     </widget>
     <addaction name="actionBrillo_contraste"/>
     <addaction name="actionMatiz_Saturacion_Luminosidad"/>
+    <addaction name="actionAjuste_Rojo_Verde_Azul"/>
     <addaction name="actionInvertir"/>
     <addaction name="menuRotar"/>
     <addaction name="actionEscala_de_color"/>
@@ -870,6 +871,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionCopiar">
    <property name="text">
     <string>Copiar</string>
+   </property>
+  </action>
+  <action name="actionAjuste_Rojo_Verde_Azul">
+   <property name="text">
+    <string>Ajuste Rojo/Verde/Azul...</string>
    </property>
   </action>
  </widget>
