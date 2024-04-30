@@ -1166,6 +1166,43 @@ void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_can
 
 //---------------------------------------------------------------------------
 
+void rotar_y_reescalar(int nfoto, double angulo, double escala, bool guardar) {
+    Mat imagen = foto[nfoto].img.clone();
+
+    int anchoImagen = imagen.cols;
+    int altoImagen = imagen.rows;
+
+    // Calcular el seno y el coseno del angulo (pasar a radianes)
+    double coseno = cos(angulo * CV_PI / 180);
+    double seno = sin(angulo * CV_PI / 180);
+
+    // Calcular el centro de la imagen despues de la rotacion
+    double cx = -anchoImagen/2 * coseno - altoImagen/2 * seno;
+    double cy = anchoImagen/2 * seno - altoImagen/2 * coseno;
+
+    coseno = fabs(coseno);
+    seno = fabs(seno);
+
+    // Calcular el tamaño de la imagen rotada
+    Size tam((anchoImagen * coseno + altoImagen * seno) * escala, (altoImagen * coseno + anchoImagen * seno) * escala);
+
+    Mat M = getRotationMatrix2D(Point2f(0, 0), angulo, escala);
+    M.at<double>(0, 2) = tam.width/2 + cx*escala;
+    M.at<double>(1, 2) = tam.height/2 + cy*escala;
+
+    warpAffine(imagen, imagen, M, tam);
+
+    if(guardar) {
+        imagen.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada = true;
+    }
+
+    imshow(foto[nfoto].nombre, imagen);
+
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;

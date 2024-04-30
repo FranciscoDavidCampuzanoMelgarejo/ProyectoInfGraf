@@ -29,6 +29,7 @@ SOURCES += main.cpp\
     perspectiva.cpp \
     pinchar_estirar.cpp \
     rojo_verde_azul.cpp \
+    rotar_reescalar.cpp \
     suavizados.cpp \
     video.cpp \
     rotaravideo.cpp \
@@ -50,6 +51,7 @@ HEADERS  += mainwindow.h \
     perspectiva.h \
     pinchar_estirar.h \
     rojo_verde_azul.h \
+    rotar_reescalar.h \
     suavizados.h \
     video.h \
     rotaravideo.h \
@@ -70,6 +72,7 @@ FORMS    += mainwindow.ui \
     perspectiva.ui \
     pinchar_estirar.ui \
     rojo_verde_azul.ui \
+    rotar_reescalar.ui \
     suavizados.ui \
     rotaravideo.ui \
     mediaponderada.ui \

@@ -202,6 +202,10 @@ void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_can
 // A cada uno de los tres canales de la foto (RGB), lo multiplica por una cierta cantidad y le suma otra
 // de forma independiente
 
+void rotar_y_reescalar(int nfoto, double angulo, double escala, bool guardar = false);
+// Rotar la imagen 'nfoto' una cierta cantidad de grados y reescalar la imagen en relacion
+// a la escala dada
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
