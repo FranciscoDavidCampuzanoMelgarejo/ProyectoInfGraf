@@ -28,6 +28,7 @@ using namespace cv;
 #include "copiar_efectos.h"
 #include "informacionimagen.h"
 #include "rojo_verde_azul.h"
+#include "convertir_color_falso.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -582,8 +583,16 @@ void MainWindow::on_actionCopiar_triggered()
 
 void MainWindow::on_actionAjuste_Rojo_Verde_Azul_triggered()
 {
-    if(foto_activa() != 1) {
+    if(foto_activa() != -1) {
         rojo_verde_azul aj_rgb(foto_activa(), this);
         aj_rgb.exec();
+    }
+}
+
+void MainWindow::on_actionConvertir_a_color_falso_triggered()
+{
+    if(foto_activa() != -1) {
+        convertir_color_falso convAFalso(foto_activa(), this);
+        convAFalso.exec();
     }
 }

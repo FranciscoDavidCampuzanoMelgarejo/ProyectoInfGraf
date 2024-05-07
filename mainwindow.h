@@ -91,6 +91,7 @@ private slots:
     void on_toolButton_13_clicked();
     void on_actionCopiar_triggered();
     void on_actionAjuste_Rojo_Verde_Azul_triggered();
+    void on_actionConvertir_a_color_falso_triggered();
 };
 
 extern MainWindow *w;

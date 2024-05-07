@@ -58,7 +58,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -93,7 +93,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -128,7 +128,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -163,7 +163,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -198,7 +198,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -233,7 +233,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -268,7 +268,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -303,7 +303,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -338,7 +338,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -373,7 +373,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -408,7 +408,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -443,7 +443,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -478,7 +478,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -513,7 +513,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -548,7 +548,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -583,7 +583,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -618,7 +618,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -653,7 +653,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -688,7 +688,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -723,7 +723,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -758,7 +758,7 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
@@ -793,13 +793,13 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="default">
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="lblAutumn">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -819,7 +819,7 @@
     <string>autumn</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lblBone">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -839,7 +839,7 @@
     <string>bone</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="lblJet">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -859,7 +859,7 @@
     <string>jet</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="lblWinter">
    <property name="geometry">
     <rect>
      <x>430</x>
@@ -879,7 +879,7 @@
     <string>winter</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="lblRainbow">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -899,7 +899,7 @@
     <string>rainbow</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="lblOcean">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -919,7 +919,7 @@
     <string>ocean</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="lblSummer">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -939,7 +939,7 @@
     <string>summer</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="lblSpring">
    <property name="geometry">
     <rect>
      <x>430</x>
@@ -959,7 +959,7 @@
     <string>spring</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="lblCool">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -979,7 +979,7 @@
     <string>cool</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="lblHSV">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -999,7 +999,7 @@
     <string>HSV</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="lblPink">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -1019,7 +1019,7 @@
     <string>pink</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="lblHot">
    <property name="geometry">
     <rect>
      <x>440</x>
@@ -1039,7 +1039,7 @@
     <string>hot</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_13">
+  <widget class="QLabel" name="lblParula">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -1059,7 +1059,7 @@
     <string>parula</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
+  <widget class="QLabel" name="lblMagma">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -1079,7 +1079,7 @@
     <string>magma</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_15">
+  <widget class="QLabel" name="lblInferno">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -1099,7 +1099,7 @@
     <string>inferno</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_16">
+  <widget class="QLabel" name="lblPlasma">
    <property name="geometry">
     <rect>
      <x>430</x>
@@ -1119,7 +1119,7 @@
     <string>plasma</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_17">
+  <widget class="QLabel" name="lblViridis">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -1139,7 +1139,7 @@
     <string>viridis</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_18">
+  <widget class="QLabel" name="lblCividis">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -1159,7 +1159,7 @@
     <string>cividis</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_19">
+  <widget class="QLabel" name="lblTwilight">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -1179,7 +1179,7 @@
     <string>twilight</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_20">
+  <widget class="QLabel" name="lblTwilightShifted">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -1199,7 +1199,7 @@
     <string>twilight shifted</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_21">
+  <widget class="QLabel" name="lblTurbo">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -1219,7 +1219,7 @@
     <string>turbo</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_22">
+  <widget class="QLabel" name="lblDeepgreen">
    <property name="geometry">
     <rect>
      <x>160</x>

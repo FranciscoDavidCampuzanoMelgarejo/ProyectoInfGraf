@@ -559,6 +559,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionAjuste_Rojo_Verde_Azul"/>
     <addaction name="actionInvertir"/>
     <addaction name="menuRotar"/>
+    <addaction name="actionConvertir_a_color_falso"/>
     <addaction name="actionEscala_de_color"/>
     <addaction name="actionMedia_ponderada"/>
     <addaction name="actionAjuste_lineal"/>
@@ -876,6 +877,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionAjuste_Rojo_Verde_Azul">
    <property name="text">
     <string>Ajuste Rojo/Verde/Azul...</string>
+   </property>
+  </action>
+  <action name="actionConvertir_a_color_falso">
+   <property name="text">
+    <string>Convertir a color falso...</string>
    </property>
   </action>
  </widget>

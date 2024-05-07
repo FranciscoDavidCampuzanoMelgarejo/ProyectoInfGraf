@@ -202,6 +202,9 @@ void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_can
 // A cada uno de los tres canales de la foto (RGB), lo multiplica por una cierta cantidad y le suma otra
 // de forma independiente
 
+void convertir_a_falso(int nfoto, int colorMap, bool guardar = false);
+// Convertir la imagen actual a una paleta de color falso seleccionada por el usuario
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
