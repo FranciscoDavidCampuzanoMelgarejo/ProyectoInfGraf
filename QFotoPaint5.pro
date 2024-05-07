@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     ajustelineal.cpp \
     bajorrelieve.cpp \
     capturarvideo.cpp \
+    convertir_color_falso.cpp \
     convolucion.cpp \
     copiar_efectos.cpp \
     informacionimagen.cpp \
@@ -40,6 +41,7 @@ HEADERS  += mainwindow.h \
     ajustelineal.h \
     bajorrelieve.h \
     capturarvideo.h \
+    convertir_color_falso.h \
     convolucion.h \
     copiar_efectos.h \
     imagenes.h \
@@ -61,6 +63,7 @@ FORMS    += mainwindow.ui \
     ajustelineal.ui \
     bajorrelieve.ui \
     capturarvideo.ui \
+    convertir_color_falso.ui \
     convolucion.ui \
     copiar_efectos.ui \
     dialognueva.ui \
