@@ -1203,6 +1203,19 @@ void rotar_y_reescalar(int nfoto, double angulo, double escala, bool guardar) {
 
 //---------------------------------------------------------------------------
 
+void convertir_a_falso(int nfoto, int colorMap, bool guardar) {
+    Mat gris;
+    cvtColor(foto[nfoto].img, gris, COLOR_BGR2GRAY);
+    applyColorMap(gris, gris, colorMap);
+    if(guardar) {
+        gris.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada = true;
+    }
+    imshow(foto[nfoto].nombre, gris);
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;

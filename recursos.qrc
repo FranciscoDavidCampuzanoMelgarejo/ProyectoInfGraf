@@ -22,5 +22,27 @@
         <file>imagenes/paint-bucket.png</file>
         <file>imagenes/suavizado.png</file>
         <file>imagenes/copiar-roi.png</file>
+        <file>imagenes/autumn.png</file>
+        <file>imagenes/bone.png</file>
+        <file>imagenes/cividis.png</file>
+        <file>imagenes/cool.png</file>
+        <file>imagenes/deepgreen.png</file>
+        <file>imagenes/hot.png</file>
+        <file>imagenes/HSV.png</file>
+        <file>imagenes/inferno.png</file>
+        <file>imagenes/jet.png</file>
+        <file>imagenes/magma.png</file>
+        <file>imagenes/ocean.png</file>
+        <file>imagenes/parula.png</file>
+        <file>imagenes/pink.png</file>
+        <file>imagenes/plasma.png</file>
+        <file>imagenes/rainbow.png</file>
+        <file>imagenes/spring.png</file>
+        <file>imagenes/summer.png</file>
+        <file>imagenes/turbo.png</file>
+        <file>imagenes/twilight.png</file>
+        <file>imagenes/twilight-shifted.png</file>
+        <file>imagenes/viridis.png</file>
+        <file>imagenes/winter.png</file>
     </qresource>
 </RCC>

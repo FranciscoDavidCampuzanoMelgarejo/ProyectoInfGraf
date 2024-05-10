@@ -206,6 +206,9 @@ void rotar_y_reescalar(int nfoto, double angulo, double escala, bool guardar = f
 // Rotar la imagen 'nfoto' una cierta cantidad de grados y reescalar la imagen en relacion
 // a la escala dada
 
+void convertir_a_falso(int nfoto, int colorMap, bool guardar = false);
+// Convertir la imagen actual a una paleta de color falso seleccionada por el usuario
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

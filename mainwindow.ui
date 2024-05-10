@@ -560,6 +560,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionInvertir"/>
     <addaction name="menuRotar"/>
     <addaction name="actionRotar_y_Reescalar"/>
+    <addaction name="actionConvertir_a_color_falso"/>
     <addaction name="actionEscala_de_color"/>
     <addaction name="actionMedia_ponderada"/>
     <addaction name="actionAjuste_lineal"/>
@@ -882,6 +883,9 @@ p, li { white-space: pre-wrap; }
   <action name="actionRotar_y_Reescalar">
    <property name="text">
     <string>Rotar y Reescalar</string>
+  <action name="actionConvertir_a_color_falso">
+   <property name="text">
+    <string>Convertir a color falso...</string>
    </property>
   </action>
  </widget>
