@@ -880,12 +880,14 @@ p, li { white-space: pre-wrap; }
     <string>Ajuste Rojo/Verde/Azul...</string>
    </property>
   </action>
-  <action name="actionRotar_y_Reescalar">
-   <property name="text">
-    <string>Rotar y Reescalar</string>
   <action name="actionConvertir_a_color_falso">
    <property name="text">
     <string>Convertir a color falso...</string>
+   </property>
+  </action>
+  <action name="actionRotar_y_Reescalar">
+   <property name="text">
+    <string>Rotar y Reescalar</string>
    </property>
   </action>
  </widget>
