@@ -209,6 +209,10 @@ void rotar_y_reescalar(int nfoto, double angulo, double escala, bool guardar = f
 void convertir_a_falso(int nfoto, int colorMap, bool guardar = false);
 // Convertir la imagen actual a una paleta de color falso seleccionada por el usuario
 
+void cambiar_modelo_color(int nfoto, int nres, int modelo);
+// Cambia el modelo de color de la foto original (BGR) a un nuevo modelo de color indicado por el parametro 'modelo'
+// Se crea una nueva foto con ese modelo
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

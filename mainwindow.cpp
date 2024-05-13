@@ -605,3 +605,66 @@ void MainWindow::on_actionConvertir_a_color_falso_triggered()
         convAFalso.exec();
     }
 }
+
+void MainWindow::on_actionRGB_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2RGB);
+    }
+}
+
+void MainWindow::on_actionHLS_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2HLS);
+    }
+}
+
+void MainWindow::on_actionHSV_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2HSV);
+    }
+}
+
+void MainWindow::on_actionXYZ_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2XYZ);
+    }
+}
+
+void MainWindow::on_actionYUV_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2YUV);
+    }
+}
+
+void MainWindow::on_actionGris_2_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2GRAY);
+    }
+}
+
+void MainWindow::on_actionLab_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2Lab);
+    }
+}
+
+void MainWindow::on_actionLuv_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2Luv);
+    }
+}
+
+void MainWindow::on_actionYCrCb_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2YCrCb);
+    }
+}

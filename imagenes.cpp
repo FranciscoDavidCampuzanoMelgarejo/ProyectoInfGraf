@@ -1216,6 +1216,14 @@ void convertir_a_falso(int nfoto, int colorMap, bool guardar) {
 
 //---------------------------------------------------------------------------
 
+void cambiar_modelo_color(int nfoto, int nres, int modelo) {
+    Mat res;
+    cvtColor(foto[nfoto].img, res, modelo);
+    crear_nueva(nres, res);
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;

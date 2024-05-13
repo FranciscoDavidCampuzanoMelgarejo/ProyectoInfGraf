@@ -554,6 +554,20 @@ p, li { white-space: pre-wrap; }
      <addaction name="actionRotar_180"/>
      <addaction name="actionRotar_91"/>
     </widget>
+    <widget class="QMenu" name="menuModelo_color">
+     <property name="title">
+      <string>Modelo color</string>
+     </property>
+     <addaction name="actionRGB"/>
+     <addaction name="actionHLS"/>
+     <addaction name="actionHSV"/>
+     <addaction name="actionXYZ"/>
+     <addaction name="actionYUV"/>
+     <addaction name="actionGris_2"/>
+     <addaction name="actionLab"/>
+     <addaction name="actionLuv"/>
+     <addaction name="actionYCrCb"/>
+    </widget>
     <addaction name="actionBrillo_contraste"/>
     <addaction name="actionMatiz_Saturacion_Luminosidad"/>
     <addaction name="actionAjuste_Rojo_Verde_Azul"/>
@@ -565,6 +579,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionMedia_ponderada"/>
     <addaction name="actionAjuste_lineal"/>
     <addaction name="actionPerspectiva"/>
+    <addaction name="menuModelo_color"/>
    </widget>
    <widget class="QMenu" name="menuEfectos">
     <property name="title">
@@ -888,6 +903,51 @@ p, li { white-space: pre-wrap; }
   <action name="actionRotar_y_Reescalar">
    <property name="text">
     <string>Rotar y Reescalar</string>
+   </property>
+  </action>
+  <action name="actionRGB">
+   <property name="text">
+    <string>RGB</string>
+   </property>
+  </action>
+  <action name="actionHLS">
+   <property name="text">
+    <string>HLS</string>
+   </property>
+  </action>
+  <action name="actionHSV">
+   <property name="text">
+    <string>HSV</string>
+   </property>
+  </action>
+  <action name="actionXYZ">
+   <property name="text">
+    <string>XYZ</string>
+   </property>
+  </action>
+  <action name="actionYUV">
+   <property name="text">
+    <string>YUV</string>
+   </property>
+  </action>
+  <action name="actionGris_2">
+   <property name="text">
+    <string>Gris</string>
+   </property>
+  </action>
+  <action name="actionLab">
+   <property name="text">
+    <string>Lab</string>
+   </property>
+  </action>
+  <action name="actionLuv">
+   <property name="text">
+    <string>Luv</string>
+   </property>
+  </action>
+  <action name="actionYCrCb">
+   <property name="text">
+    <string>YCrCb</string>
    </property>
   </action>
  </widget>

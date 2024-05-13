@@ -93,6 +93,15 @@ private slots:
     void on_actionAjuste_Rojo_Verde_Azul_triggered();
     void on_actionRotar_y_Reescalar_triggered();
     void on_actionConvertir_a_color_falso_triggered();
+    void on_actionRGB_triggered();
+    void on_actionHLS_triggered();
+    void on_actionHSV_triggered();
+    void on_actionXYZ_triggered();
+    void on_actionYUV_triggered();
+    void on_actionGris_2_triggered();
+    void on_actionLab_triggered();
+    void on_actionLuv_triggered();
+    void on_actionYCrCb_triggered();
 };
 
 extern MainWindow *w;
