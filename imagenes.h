@@ -216,6 +216,10 @@ void cambiar_modelo_color(int nfoto, int nres, int modelo);
 void ver_espectro(int nfoto, int nres);
 // Calcular el espectro de intensidad de la foto activa (magnitud de la transformada de Fourier)
 
+void ver_perfilado(int nfoto, int radio, double porcentaje, bool guardar = false);
+// Aplica la convulución de perfilado sobre la imagen activa. El radio indica el tamaño del kernel (matriz de convolucion)
+// y el porcentaje sirve como ponderacion entre la imagen actual y la laplaciana
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

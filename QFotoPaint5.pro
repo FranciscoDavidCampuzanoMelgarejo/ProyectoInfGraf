@@ -27,6 +27,7 @@ SOURCES += main.cpp\
     dialognueva.cpp \
     brillocontraste.cpp \
     mat_sat_lum.cpp \
+    perfilado.cpp \
     perspectiva.cpp \
     pinchar_estirar.cpp \
     rojo_verde_azul.cpp \
@@ -50,6 +51,7 @@ HEADERS  += mainwindow.h \
     brillocontraste.h \
     informacionimagen.h \
     mat_sat_lum.h \
+    perfilado.h \
     perspectiva.h \
     pinchar_estirar.h \
     rojo_verde_azul.h \
@@ -72,6 +74,7 @@ FORMS    += mainwindow.ui \
     brillocontraste.ui \
     informacionimagen.ui \
     mat_sat_lum.ui \
+    perfilado.ui \
     perspectiva.ui \
     pinchar_estirar.ui \
     rojo_verde_azul.ui \

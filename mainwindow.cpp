@@ -30,6 +30,7 @@ using namespace cv;
 #include "rojo_verde_azul.h"
 #include "rotar_reescalar.h"
 #include "convertir_color_falso.h"
+#include "perfilado.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -673,5 +674,13 @@ void MainWindow::on_actionEspectro_triggered()
 {
     if(foto_activa() != -1 && primera_libre() != -1) {
         ver_espectro(foto_activa(), primera_libre());
+    }
+}
+
+void MainWindow::on_actionPerfilado_triggered()
+{
+    if(foto_activa() != -1) {
+        Perfilado per(foto_activa(), this);
+        per.exec();
     }
 }

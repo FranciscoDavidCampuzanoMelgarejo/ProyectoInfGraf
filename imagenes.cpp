@@ -1252,6 +1252,27 @@ void ver_espectro(int nfoto, int nres) {
 
 //---------------------------------------------------------------------------
 
+void ver_perfilado(int nfoto, int radio, double porcentaje, bool guardar) {
+
+    Mat imagen = foto[nfoto].img.clone();
+    Mat laplaciana;
+    Laplacian(imagen, laplaciana, CV_16S, radio);
+    imagen.convertTo(imagen, CV_16S);
+
+    Mat res;
+    addWeighted(imagen, 1.0, laplaciana, -porcentaje, 0, res);
+    res.convertTo(res, CV_8U);
+
+    if(guardar) {
+        res.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada = true;
+    }
+    imshow(foto[nfoto].nombre, res);
+
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;
