@@ -102,6 +102,7 @@ private slots:
     void on_actionLab_triggered();
     void on_actionLuv_triggered();
     void on_actionYCrCb_triggered();
+    void on_actionEspectro_triggered();
 };
 
 extern MainWindow *w;

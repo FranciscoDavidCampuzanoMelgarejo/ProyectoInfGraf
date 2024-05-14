@@ -580,6 +580,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionAjuste_lineal"/>
     <addaction name="actionPerspectiva"/>
     <addaction name="menuModelo_color"/>
+    <addaction name="actionEspectro"/>
    </widget>
    <widget class="QMenu" name="menuEfectos">
     <property name="title">
@@ -948,6 +949,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionYCrCb">
    <property name="text">
     <string>YCrCb</string>
+   </property>
+  </action>
+  <action name="actionEspectro">
+   <property name="text">
+    <string>Espectro</string>
    </property>
   </action>
  </widget>

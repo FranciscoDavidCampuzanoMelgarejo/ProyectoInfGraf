@@ -668,3 +668,10 @@ void MainWindow::on_actionYCrCb_triggered()
         cambiar_modelo_color(foto_activa(), primera_libre(), COLOR_BGR2YCrCb);
     }
 }
+
+void MainWindow::on_actionEspectro_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        ver_espectro(foto_activa(), primera_libre());
+    }
+}

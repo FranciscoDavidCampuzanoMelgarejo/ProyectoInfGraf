@@ -1224,6 +1224,34 @@ void cambiar_modelo_color(int nfoto, int nres, int modelo) {
 
 //---------------------------------------------------------------------------
 
+void ver_espectro(int nfoto, int nres) {
+    // Convertir la imagen a gris
+    Mat gris;
+    cvtColor(foto[nfoto].img, gris, COLOR_BGR2GRAY);
+
+    Mat escala;
+    gris.convertTo(escala, CV_32FC1, 1.0/255);
+
+    // Obtener la transformada de fourier
+    Mat fourier;
+    dft(escala, fourier, DFT_COMPLEX_OUTPUT);
+
+    // Centrar la transformada
+    centrarFourier(fourier);
+
+    // Calcular la magnitud de la transformada de Fourier
+    vector<Mat> canales;
+    split(fourier, canales);
+    magnitude(canales[0], canales[1], fourier);
+
+    Mat res;
+    fourier.convertTo(res, CV_8UC1, -1, 255);
+    crear_nueva(nres, res);
+
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;
@@ -1272,3 +1300,27 @@ void liberar_copia() {
     isCopiado = false;
 }
 
+//---------------------------------------------------------------------------
+
+void centrarFourier(Mat &fourier) {
+
+    // Calcular el centro de la imagen
+    int cx = fourier.cols / 2;
+    int cy = fourier.rows / 2;
+
+    Mat q0(fourier, Rect(0, 0, cx, cy));   // Cuadrante sup-izq
+    Mat q1(fourier, Rect(cx, 0, cx, cy));  // Cuadrante sup-der
+    Mat q2(fourier, Rect(0, cy, cx, cy));  // Cuadrante inf-izq
+    Mat q3(fourier, Rect(cx, cy, cx, cy)); // Cuadrante inf-der
+
+    // Intercambiar cuadrantre sup-izq por inf-der
+    Mat tmp;
+    q0.copyTo(tmp);
+    q3.copyTo(q0);
+    tmp.copyTo(q3);
+
+    // Intermcambiar cuadrante sup-der por inf-izq
+    q1.copyTo(tmp);
+    q2.copyTo(q1);
+    tmp.copyTo(q2);
+}

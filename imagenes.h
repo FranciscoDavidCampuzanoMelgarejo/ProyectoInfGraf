@@ -213,6 +213,9 @@ void cambiar_modelo_color(int nfoto, int nres, int modelo);
 // Cambia el modelo de color de la foto original (BGR) a un nuevo modelo de color indicado por el parametro 'modelo'
 // Se crea una nueva foto con ese modelo
 
+void ver_espectro(int nfoto, int nres);
+// Calcular el espectro de intensidad de la foto activa (magnitud de la transformada de Fourier)
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
@@ -228,5 +231,9 @@ string Lt1(string cadena);
 void liberar_copia();
 // Liberar de memoria la copia guardada de la foto que ha sido seleccionada
 // con la herramienta de COPIA
+
+void centrarFourier(Mat &fourier);
+// Centrar la transformadad de Fourier. Consiste en dividir la imagen en 4 cuadrantes (rectangulos), e intercambiar los
+// cuadrantes diagonalmente
 
 #endif // IMAGENES_H
