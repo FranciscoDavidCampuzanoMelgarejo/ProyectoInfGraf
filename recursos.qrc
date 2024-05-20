@@ -44,5 +44,6 @@
         <file>imagenes/twilight-shifted.png</file>
         <file>imagenes/viridis.png</file>
         <file>imagenes/winter.png</file>
+        <file>imagenes/seleccionar-color.png</file>
     </qresource>
 </RCC>

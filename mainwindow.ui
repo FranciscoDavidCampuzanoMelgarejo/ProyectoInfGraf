@@ -599,6 +599,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionPinchar_Estirar"/>
     <addaction name="actionConvolucion"/>
     <addaction name="actionPerfilado"/>
+    <addaction name="actionTexto"/>
    </widget>
    <widget class="QMenu" name="menuV_deo">
     <property name="title">
@@ -960,6 +961,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionPerfilado">
    <property name="text">
     <string>Perfilado</string>
+   </property>
+  </action>
+  <action name="actionTexto">
+   <property name="text">
+    <string>Texto...</string>
    </property>
   </action>
  </widget>

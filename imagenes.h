@@ -220,6 +220,10 @@ void ver_perfilado(int nfoto, int radio, double porcentaje, bool guardar = false
 // Aplica la convulución de perfilado sobre la imagen activa. El radio indica el tamaño del kernel (matriz de convolucion)
 // y el porcentaje sirve como ponderacion entre la imagen actual y la laplaciana
 
+void ponerTextoEnImagen(int nfoto, string texto, int tam, Scalar color, int x, int y, bool guardar = false);
+// Añade a la foto actual un texto con un color dado, y aplicando un efecto de sobra y semitransparencia.
+// El texto se coloca en la posicion (x, y)
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
@@ -239,5 +243,8 @@ void liberar_copia();
 void centrarFourier(Mat &fourier);
 // Centrar la transformadad de Fourier. Consiste en dividir la imagen en 4 cuadrantes (rectangulos), e intercambiar los
 // cuadrantes diagonalmente
+
+double getEscalaTexto(string texto, int tam);
+// Obtener la escala del texto a partir del tamaño en pixeles que se quiere que ocupe
 
 #endif // IMAGENES_H

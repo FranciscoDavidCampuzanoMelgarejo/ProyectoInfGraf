@@ -31,6 +31,7 @@ using namespace cv;
 #include "rotar_reescalar.h"
 #include "convertir_color_falso.h"
 #include "perfilado.h"
+#include "poner_texto.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -682,5 +683,13 @@ void MainWindow::on_actionPerfilado_triggered()
     if(foto_activa() != -1) {
         Perfilado per(foto_activa(), this);
         per.exec();
+    }
+}
+
+void MainWindow::on_actionTexto_triggered()
+{
+    if(foto_activa() != -1) {
+        poner_texto ptexto(foto_activa(), this);
+        ptexto.exec();
     }
 }

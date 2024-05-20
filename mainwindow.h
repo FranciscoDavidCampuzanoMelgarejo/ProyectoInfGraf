@@ -104,6 +104,7 @@ private slots:
     void on_actionYCrCb_triggered();
     void on_actionEspectro_triggered();
     void on_actionPerfilado_triggered();
+    void on_actionTexto_triggered();
 };
 
 extern MainWindow *w;

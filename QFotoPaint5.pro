@@ -30,6 +30,7 @@ SOURCES += main.cpp\
     perfilado.cpp \
     perspectiva.cpp \
     pinchar_estirar.cpp \
+    poner_texto.cpp \
     rojo_verde_azul.cpp \
     rotar_reescalar.cpp \
     suavizados.cpp \
@@ -54,6 +55,7 @@ HEADERS  += mainwindow.h \
     perfilado.h \
     perspectiva.h \
     pinchar_estirar.h \
+    poner_texto.h \
     rojo_verde_azul.h \
     rotar_reescalar.h \
     suavizados.h \
@@ -77,6 +79,7 @@ FORMS    += mainwindow.ui \
     perfilado.ui \
     perspectiva.ui \
     pinchar_estirar.ui \
+    poner_texto.ui \
     rojo_verde_azul.ui \
     rotar_reescalar.ui \
     suavizados.ui \

@@ -1273,6 +1273,46 @@ void ver_perfilado(int nfoto, int radio, double porcentaje, bool guardar) {
 
 //---------------------------------------------------------------------------
 
+void ponerTextoEnImagen(int nfoto, string texto, int tam, Scalar color, int x, int y, bool guardar) {
+    Mat imagen = foto[nfoto].img.clone();
+
+    // Creamos una mascara del tamaño de la imagen, obtenemos la escala del texto y añadimos el texto en blanco
+    Mat mascara(imagen.size(), CV_8UC3, Scalar::all(0));
+    double escala = getEscalaTexto(texto, tam);
+    putText(mascara, texto, Point(x + 5, y + (tam/2)), FONT_HERSHEY_PLAIN, escala, Scalar::all(255), 2);
+
+    // Aplicamos un suavizado Gaussiano a la mascara
+    Mat suavizado;
+    GaussianBlur(mascara, suavizado, Size(3, 3), 0.0);
+
+    // Aplicamos un desplazamiento (transformacion afín)
+    Mat matrizDesplazamiento = (Mat_<float>(2, 3) << 1, 0, 4, 0, 1, 4);
+    warpAffine(suavizado, suavizado, matrizDesplazamiento, mascara.size());
+
+    Mat resultado = suavizado + mascara; // Mascara que contiene el texto y la sombra
+    imagen = imagen + resultado; // Añade el texto y su sombra a la imagen
+
+    Mat resultadoInversa;
+    bitwise_not(resultado, resultadoInversa);
+
+    multiply(imagen, resultadoInversa, imagen, 1.0/255);
+    putText(imagen, texto, Point(x + 5, y + (tam/2)), FONT_HERSHEY_PLAIN, escala, color, 2);
+    addWeighted(imagen, 0.5, foto[nfoto].img, 0.5, 0.0, imagen);
+
+    if(!guardar) {
+        circle(imagen, Point(x, y), 5, Scalar(0, 0, 0), -1, LINE_AA);
+    } else {
+        qDebug() << "Imagen guardada";
+        imagen.copyTo(foto[nfoto].img);
+        foto[nfoto].modificada = true;
+    }
+
+    qDebug() << "Mostrar foto";
+    imshow(foto[nfoto].nombre, imagen);
+}
+
+//---------------------------------------------------------------------------
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar) {
 
     Mat res;
@@ -1344,4 +1384,14 @@ void centrarFourier(Mat &fourier) {
     q1.copyTo(tmp);
     q2.copyTo(q1);
     tmp.copyTo(q2);
+}
+
+//---------------------------------------------------------------------------
+
+double getEscalaTexto(string texto, int tam) {
+
+    Size tamTexto = getTextSize(texto, FONT_HERSHEY_PLAIN, 1.0, 2, nullptr);
+    double escala = static_cast<double>(tam) / min(tamTexto.width, tamTexto.height);
+    return escala;
+
 }
