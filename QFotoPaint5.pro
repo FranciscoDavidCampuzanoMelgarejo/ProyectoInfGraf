@@ -16,6 +16,7 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
     ajustelineal.cpp \
+    aplicar_morfologia.cpp \
     bajorrelieve.cpp \
     capturarvideo.cpp \
     convertir_color_falso.cpp \
@@ -42,6 +43,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     ajustelineal.h \
+    aplicar_morfologia.h \
     bajorrelieve.h \
     capturarvideo.h \
     convertir_color_falso.h \
@@ -67,6 +69,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     ajustelineal.ui \
+    aplicar_morfologia.ui \
     bajorrelieve.ui \
     capturarvideo.ui \
     convertir_color_falso.ui \

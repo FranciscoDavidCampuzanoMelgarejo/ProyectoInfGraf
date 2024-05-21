@@ -105,6 +105,7 @@ private slots:
     void on_actionEspectro_triggered();
     void on_actionPerfilado_triggered();
     void on_actionTexto_triggered();
+    void on_actionAplicar_op_morfol_gica_triggered();
 };
 
 extern MainWindow *w;

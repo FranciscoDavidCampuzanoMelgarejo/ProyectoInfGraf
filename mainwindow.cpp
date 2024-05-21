@@ -32,6 +32,7 @@ using namespace cv;
 #include "convertir_color_falso.h"
 #include "perfilado.h"
 #include "poner_texto.h"
+#include "aplicar_morfologia.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -691,5 +692,13 @@ void MainWindow::on_actionTexto_triggered()
     if(foto_activa() != -1) {
         poner_texto ptexto(foto_activa(), this);
         ptexto.exec();
+    }
+}
+
+void MainWindow::on_actionAplicar_op_morfol_gica_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        aplicar_morfologia apMorfologia(foto_activa(), primera_libre(), this);
+        apMorfologia.exec();
     }
 }

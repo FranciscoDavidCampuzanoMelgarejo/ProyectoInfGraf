@@ -1329,6 +1329,21 @@ void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool 
 
 //---------------------------------------------------------------------------
 
+Mat aplicarMorfologia(Mat &entrada, int nres, int operacion, int tam, int iteraciones, bool guardar) {
+    Mat imagen = entrada.clone();
+    Mat elemento = getStructuringElement(MORPH_RECT, Size(2*tam+1, 2*tam+1), Point(tam, tam));
+    morphologyEx(imagen, imagen, operacion, elemento, Point(-1, -1), iteraciones);
+
+    if(guardar) {
+        crear_nueva(nres, imagen);
+    } else {
+        imshow("Morfologia", imagen);
+    }
+    return imagen;
+}
+
+//---------------------------------------------------------------------------
+
 void media_ponderada (int nf1, int nf2, int nueva, double peso)
 {
     assert(nf1>=0 && nf1<MAX_VENTANAS && foto[nf1].usada);

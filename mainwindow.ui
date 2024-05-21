@@ -600,6 +600,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionConvolucion"/>
     <addaction name="actionPerfilado"/>
     <addaction name="actionTexto"/>
+    <addaction name="actionAplicar_op_morfol_gica"/>
    </widget>
    <widget class="QMenu" name="menuV_deo">
     <property name="title">
@@ -966,6 +967,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionTexto">
    <property name="text">
     <string>Texto...</string>
+   </property>
+  </action>
+  <action name="actionAplicar_op_morfol_gica">
+   <property name="text">
+    <string>Aplicar op. morfológica...</string>
    </property>
   </action>
  </widget>

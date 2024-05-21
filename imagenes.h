@@ -224,6 +224,10 @@ void ponerTextoEnImagen(int nfoto, string texto, int tam, Scalar color, int x, i
 // Añade a la foto actual un texto con un color dado, y aplicando un efecto de sobra y semitransparencia.
 // El texto se coloca en la posicion (x, y)
 
+Mat aplicarMorfologia(Mat &entrada, int nres, int operacion, int tam, int iteraciones, bool guardar = false);
+// Aplicar la operacion morfologica dada a la imagen de entrada usando un kernel con un tamaño dado
+// y con las iteraciones indicadas. Devuelve la imagen modificada
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
