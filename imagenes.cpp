@@ -1363,6 +1363,15 @@ void balanceBlancos(int nfoto, int nres) {
 
 //---------------------------------------------------------------------------
 
+void aplicarInpaint(int nfoto, int nres, Mat &mascara, int radio) {
+    Mat imagen = foto[nfoto].img;
+    Mat res;
+    inpaint(imagen, mascara, res, radio, INPAINT_TELEA);
+    crear_nueva(nres, res);
+}
+
+//---------------------------------------------------------------------------
+
 void media_ponderada (int nf1, int nf2, int nueva, double peso)
 {
     assert(nf1>=0 && nf1<MAX_VENTANAS && foto[nf1].usada);

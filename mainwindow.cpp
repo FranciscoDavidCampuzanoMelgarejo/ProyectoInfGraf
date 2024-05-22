@@ -33,6 +33,7 @@ using namespace cv;
 #include "perfilado.h"
 #include "poner_texto.h"
 #include "aplicar_morfologia.h"
+#include "dialogo_inpaint.h"
 
 QString FiltroImagen = "Todos los formatos (*.jpg *.jpeg *.jpe .jp2 *.tif *.tiff *.png *.gif *.bmp *.dib *.webp *.ppm);;Archivos JPG (*.jpg *.jpeg *.jpe);;Archivos TIF (*.tif *.tiff);;Archivos PNG (*.png);;Archivos GIF (*.gif);;Archivos BMP (*.bmp *.dib);;Otros (*.*)";
 
@@ -707,5 +708,13 @@ void MainWindow::on_actionAjustar_balance_de_blancos_triggered()
 {
     if(foto_activa() != -1 && primera_libre() != -1) {
         balanceBlancos(foto_activa(), primera_libre());
+    }
+}
+
+void MainWindow::on_actionInpaint_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        dialogo_inpaint dInpaint(foto_activa(), primera_libre(), this);
+        dInpaint.exec();
     }
 }

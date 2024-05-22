@@ -232,6 +232,10 @@ void balanceBlancos(int nfoto, int nres);
 // Aplica el algoritmo Gray World a la foto activa para ajustar el balance de blancos
 // Se crea una nueva foto con el ajusta hecho
 
+void aplicarInpaint(int nfoto, int nres, Mat &mascara, int radio);
+// Aplicar el algoritmo de inpaint a la foto activa, usando una mascara con los cambios indicados
+// El resultado se guarda en una nueva foto
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

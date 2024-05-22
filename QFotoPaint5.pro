@@ -22,6 +22,7 @@ SOURCES += main.cpp\
     convertir_color_falso.cpp \
     convolucion.cpp \
     copiar_efectos.cpp \
+    dialogo_inpaint.cpp \
     informacionimagen.cpp \
     mainwindow.cpp \
     imagenes.cpp \
@@ -49,6 +50,7 @@ HEADERS  += mainwindow.h \
     convertir_color_falso.h \
     convolucion.h \
     copiar_efectos.h \
+    dialogo_inpaint.h \
     imagenes.h \
     dialognueva.h \
     brillocontraste.h \
@@ -77,6 +79,7 @@ FORMS    += mainwindow.ui \
     copiar_efectos.ui \
     dialognueva.ui \
     brillocontraste.ui \
+    dialogo_inpaint.ui \
     informacionimagen.ui \
     mat_sat_lum.ui \
     perfilado.ui \
