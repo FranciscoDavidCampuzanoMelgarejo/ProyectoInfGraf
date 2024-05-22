@@ -702,3 +702,10 @@ void MainWindow::on_actionAplicar_op_morfol_gica_triggered()
         apMorfologia.exec();
     }
 }
+
+void MainWindow::on_actionAjustar_balance_de_blancos_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        balanceBlancos(foto_activa(), primera_libre());
+    }
+}

@@ -228,6 +228,10 @@ Mat aplicarMorfologia(Mat &entrada, int nres, int operacion, int tam, int iterac
 // Aplicar la operacion morfologica dada a la imagen de entrada usando un kernel con un tamaño dado
 // y con las iteraciones indicadas. Devuelve la imagen modificada
 
+void balanceBlancos(int nfoto, int nres);
+// Aplica el algoritmo Gray World a la foto activa para ajustar el balance de blancos
+// Se crea una nueva foto con el ajusta hecho
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 
@@ -240,6 +244,8 @@ void media_ponderada (int nf1, int nf2, int nueva, double peso);
 string Lt1(string cadena);
 // Convertir una cadena de UTF8 a Latin1
 
+// FUNCIONES AUXILIARES
+
 void liberar_copia();
 // Liberar de memoria la copia guardada de la foto que ha sido seleccionada
 // con la herramienta de COPIA
@@ -250,5 +256,11 @@ void centrarFourier(Mat &fourier);
 
 double getEscalaTexto(string texto, int tam);
 // Obtener la escala del texto a partir del tamaño en pixeles que se quiere que ocupe
+
+void calcularMediaLAB(Mat &imagen, double &media_a, double &media_b);
+// Calcula la media de los canales a y b de una imagen en el espacio de color Lab
+
+void desplazarCanalesLAB(Mat &imagen, double des_a, double des_b);
+// Desplaza los valores del canal a y b una determinada cantidad
 
 #endif // IMAGENES_H

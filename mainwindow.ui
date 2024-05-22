@@ -601,6 +601,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionPerfilado"/>
     <addaction name="actionTexto"/>
     <addaction name="actionAplicar_op_morfol_gica"/>
+    <addaction name="actionAjustar_balance_de_blancos"/>
    </widget>
    <widget class="QMenu" name="menuV_deo">
     <property name="title">
@@ -972,6 +973,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionAplicar_op_morfol_gica">
    <property name="text">
     <string>Aplicar op. morfológica...</string>
+   </property>
+  </action>
+  <action name="actionAjustar_balance_de_blancos">
+   <property name="text">
+    <string>Ajustar balance de blancos</string>
    </property>
   </action>
  </widget>

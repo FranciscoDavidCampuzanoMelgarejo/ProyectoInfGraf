@@ -1344,6 +1344,25 @@ Mat aplicarMorfologia(Mat &entrada, int nres, int operacion, int tam, int iterac
 
 //---------------------------------------------------------------------------
 
+void balanceBlancos(int nfoto, int nres) {
+    Mat imagen = foto[nfoto].img.clone();
+    imagen.convertTo(imagen, CV_32F, 1.0/255.0);
+    cvtColor(imagen, imagen, COLOR_BGR2Lab); // Trabajamos en el espacio de color Lab
+
+    double media_canal_a, media_canal_b;
+    calcularMediaLAB(imagen, media_canal_a, media_canal_b);
+    desplazarCanalesLAB(imagen, -media_canal_a, -media_canal_b);
+
+    // Convertimos de Lab a BGR y de 32F a 8U
+    cvtColor(imagen, imagen, COLOR_Lab2BGR);
+    imagen.convertTo(imagen, CV_8U, 255.0);
+
+    crear_nueva(nres, imagen);
+
+}
+
+//---------------------------------------------------------------------------
+
 void media_ponderada (int nf1, int nf2, int nueva, double peso)
 {
     assert(nf1>=0 && nf1<MAX_VENTANAS && foto[nf1].usada);
@@ -1408,5 +1427,30 @@ double getEscalaTexto(string texto, int tam) {
     Size tamTexto = getTextSize(texto, FONT_HERSHEY_PLAIN, 1.0, 2, nullptr);
     double escala = static_cast<double>(tam) / min(tamTexto.width, tamTexto.height);
     return escala;
+}
 
+//---------------------------------------------------------------------------
+
+void calcularMediaLAB(Mat &imagen, double &media_a, double &media_b) {
+    vector<Mat> canales;
+    split(imagen, canales);
+
+    media_a = mean(canales[1])[0];
+    media_b = mean(canales[2])[0];
+
+}
+
+//---------------------------------------------------------------------------
+
+void desplazarCanalesLAB(Mat &imagen, double des_a, double des_b) {
+    for (int y = 0; y < imagen.rows; y++) {
+        for (int x = 0; x < imagen.cols; x++) {
+            Vec3f& lab = imagen.at<Vec3f>(y, x);
+            double l = lab[0];
+            double a_delta = des_a * (l / 100.0) * 1.1;
+            double b_delta = des_b * (l / 100.0) * 1.1;
+            lab[1] += a_delta;
+            lab[2] += b_delta;
+        }
+    }
 }
