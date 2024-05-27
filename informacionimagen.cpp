@@ -8,9 +8,12 @@ InformacionImagen::InformacionImagen(QVector<QString> informacion, QWidget *pare
     ui->setupUi(this);
     inicializarVectorEtiquetas();
 
-    ui->labelSizeValue->setText(informacion[0] + " x " + informacion[1]);
+    ui->labelSizeValue->setText(informacion[0] + " x " + informacion[1]); // Ancho x alto
+    // Profundidad del pixel
+    int prof = informacion[2].toInt();
+    ui->labelProfundidadValue->setText(this->profundidades[prof]);
 
-    for(int i = 2, j = 0; i < informacion.size(); i++, j++) {
+    for(int i = 3, j = 0; i < informacion.size(); i++, j++) {
         // Campo de la memoria total de la imagen
         if(i == 4) {
             deBytesAMega(informacion[i]);
@@ -27,7 +30,6 @@ InformacionImagen::~InformacionImagen()
 }
 
 void InformacionImagen::inicializarVectorEtiquetas() {
-    etiquetas.append(ui->labelProfundidadValue);
     etiquetas.append(ui->labelCanalesValue);
     etiquetas.append(ui->labelMemoriaValue);
     etiquetas.append(ui->labelRGBMediaValue);

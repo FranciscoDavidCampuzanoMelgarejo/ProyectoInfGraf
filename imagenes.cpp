@@ -238,7 +238,7 @@ int num_fotos (int &usadas, int &modificadas)
 
 void nueva_desde_portapaples(int nfoto, QImage& imagen) {
     Mat img(imagen.height(), imagen.width(), CV_8UC4, imagen.scanLine(0));
-    cvtColor(img, img, COLOR_BGRA2BGR);
+    cvtColor(img, img, COLOR_RGBA2RGB);
     crear_nueva(nfoto, img);
 }
 
@@ -1052,8 +1052,8 @@ void copiar_a_nueva(int nfoto, int nres) {
 QImage copiar_al_portapapeles(int nfoto) {
     Mat trozo = foto[nfoto].img(foto[nfoto].roi).clone();
     cvtColor(trozo, trozo, COLOR_BGR2RGB); // Mat -> BGR; QImage -> RGB
-    QImage imagen(trozo.data, trozo.cols, trozo.rows, QImage::Format_RGB888);
-    return imagen;
+    QImage imagen(trozo.data, trozo.cols, trozo.rows, trozo.step, QImage::Format_RGB888);
+    return imagen.copy();
 }
 
 //--------------------------------------------------------------------------
