@@ -569,9 +569,17 @@ p, li { white-space: pre-wrap; }
      <addaction name="actionLuv"/>
      <addaction name="actionYCrCb"/>
     </widget>
+    <widget class="QMenu" name="menuEcualizaci_n_global_histograma">
+     <property name="title">
+      <string>Ecualización global histograma</string>
+     </property>
+     <addaction name="actionIndependiente"/>
+     <addaction name="actionConjunta"/>
+    </widget>
     <addaction name="actionBrillo_contraste"/>
     <addaction name="actionMatiz_Saturacion_Luminosidad"/>
     <addaction name="actionAjuste_Rojo_Verde_Azul"/>
+    <addaction name="menuEcualizaci_n_global_histograma"/>
     <addaction name="actionInvertir"/>
     <addaction name="menuRotar"/>
     <addaction name="actionRotar_y_Reescalar"/>
@@ -990,6 +998,16 @@ p, li { white-space: pre-wrap; }
   <action name="actionVer_histograma_2D">
    <property name="text">
     <string>Ver histograma 2D...</string>
+   </property>
+  </action>
+  <action name="actionIndependiente">
+   <property name="text">
+    <string>Independiente</string>
+   </property>
+  </action>
+  <action name="actionConjunta">
+   <property name="text">
+    <string>Conjunta</string>
    </property>
   </action>
  </widget>

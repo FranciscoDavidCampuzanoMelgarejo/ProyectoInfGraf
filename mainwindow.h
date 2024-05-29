@@ -109,6 +109,8 @@ private slots:
     void on_actionAjustar_balance_de_blancos_triggered();
     void on_actionInpaint_triggered();
     void on_actionVer_histograma_2D_triggered();
+    void on_actionIndependiente_triggered();
+    void on_actionConjunta_triggered();
 };
 
 extern MainWindow *w;

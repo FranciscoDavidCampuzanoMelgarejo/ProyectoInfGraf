@@ -727,3 +727,17 @@ void MainWindow::on_actionVer_histograma_2D_triggered()
         dHist2D.exec();
     }
 }
+
+void MainWindow::on_actionIndependiente_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        ecualizar_histograma_independiente(foto_activa(), primera_libre());
+    }
+}
+
+void MainWindow::on_actionConjunta_triggered()
+{
+    if(foto_activa() != -1 && primera_libre() != -1) {
+        ecualizar_histograma_conjunta(foto_activa(), primera_libre());
+    }
+}

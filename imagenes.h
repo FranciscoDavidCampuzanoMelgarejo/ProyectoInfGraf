@@ -244,6 +244,13 @@ void ver_histograma2D(int nfoto, int nres, int celdas, canales_histograma2D cana
 // Mostrar el histograma de dos canales (R-G, R-B, G-B) indicando el numero de celdas (bins).
 // Guardar el resultado cuando guardar sea igual a true
 
+void ecualizar_histograma_independiente(int nfoto, int nres);
+// Ecualiza el histograma ecualizando cada canal de la foto de forma independiente
+
+void ecualizar_histograma_conjunta(int nfoto, int nres);
+// Ecualiza el histograma de la foto de forma conjunta. Para ello, se convierta la imagen a grises, se calcula
+// su histograma y se normaliza y, por ultimo, se utiliza una tabla LUT
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

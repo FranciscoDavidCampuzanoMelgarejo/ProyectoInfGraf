@@ -1442,6 +1442,49 @@ void ver_histograma2D(int nfoto, int nres, int celdas, canales_histograma2D cana
 
 //---------------------------------------------------------------------------
 
+void ecualizar_histograma_independiente(int nfoto, int nres) {
+    Mat imagen = foto[nfoto].img.clone();
+    vector<Mat> canales;
+    split(imagen, canales);
+    for(int i = 0; i < canales.size(); i++) {
+        equalizeHist(canales[i], canales[i]);
+    }
+    merge(canales, imagen);
+    crear_nueva(nres, imagen);
+}
+
+//---------------------------------------------------------------------------
+
+void ecualizar_histograma_conjunta(int nfoto, int nres) {
+    Mat gris;
+    cvtColor(foto[nfoto].img, gris, COLOR_BGR2GRAY);
+
+    // Calcular el histograma de la foto en grises
+    int canales[] = {0};
+    int bins[] = {256};
+    float rango[] = {0 ,256};
+    const float* rangos[] = {rango, rango};
+    Mat hist;
+    calcHist(&gris, 1, canales, noArray(), hist, 1, bins, rangos);
+
+    // Normalizar el histograma
+    hist *= 255.0/norm(hist, NORM_L1);
+
+    // Crear la tabla LUT e inicializarla
+    Mat lut(1, 256, CV_8UC1);
+    float acum = 0.0;
+    for(int i = 0; i < 256; i++) {
+        lut.at<uchar>(0, i) = acum;
+        acum += hist.at<float>(i);
+    }
+
+    Mat res;
+    LUT(foto[nfoto].img, lut, res);
+    crear_nueva(nres, res);
+}
+
+//---------------------------------------------------------------------------
+
 void media_ponderada (int nf1, int nf2, int nueva, double peso)
 {
     assert(nf1>=0 && nf1<MAX_VENTANAS && foto[nf1].usada);
