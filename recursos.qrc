@@ -45,5 +45,8 @@
         <file>imagenes/viridis.png</file>
         <file>imagenes/winter.png</file>
         <file>imagenes/seleccionar-color.png</file>
+        <file>imagenes/Histograma_G-B.png</file>
+        <file>imagenes/Histograma_R-B.png</file>
+        <file>imagenes/Histograma_R-G.png</file>
     </qresource>
 </RCC>

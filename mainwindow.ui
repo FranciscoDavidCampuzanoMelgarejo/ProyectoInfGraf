@@ -524,6 +524,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionCopiar_al_portapapeles"/>
     <addaction name="actionVer_informacion"/>
     <addaction name="menuVer_histograma"/>
+    <addaction name="actionVer_histograma_2D"/>
     <addaction name="separator"/>
     <addaction name="menuOpciones"/>
    </widget>
@@ -984,6 +985,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionInpaint">
    <property name="text">
     <string>Inpaint</string>
+   </property>
+  </action>
+  <action name="actionVer_histograma_2D">
+   <property name="text">
+    <string>Ver histograma 2D...</string>
    </property>
   </action>
  </widget>

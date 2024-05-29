@@ -1372,6 +1372,76 @@ void aplicarInpaint(int nfoto, int nres, Mat &mascara, int radio) {
 
 //---------------------------------------------------------------------------
 
+void ver_histograma2D(int nfoto, int nres, int celdas, canales_histograma2D canales, bool guardar) {
+
+    // Obtener la imagen en la que se va a dibujar el histograma
+    QString rutaImagnes[3] = {":/imagenes/Histograma_R-G.png", ":/imagenes/Histograma_R-B.png", ":/imagenes/Histograma_G-B.png"};
+    QString ruta = rutaImagnes[canales];
+    QImage imq = QImage(ruta);
+    Mat img(imq.height(), imq.width(), CV_8UC4, imq.scanLine(0));
+    cvtColor(img, img, COLOR_RGBA2RGB);
+
+    // Cambiar de el espacio de color de la imagen activa de BGR a RGB (Realmente no es necesario)
+    Mat imagen = foto[nfoto].img.clone();
+    cvtColor(imagen, imagen, COLOR_BGR2RGB);
+
+    // Calculo del histograma
+    Mat hist;
+    int bins[] = {celdas, celdas};
+    float rango[] = {0, 256};
+    const float *rangos[] = {rango, rango};
+    int canalesHistograma[2];
+    switch (canales) {
+        case R_G:
+            canalesHistograma[0] = 0;
+            canalesHistograma[1] = 1;
+        break;
+
+        case R_B:
+            canalesHistograma[0] = 0;
+            canalesHistograma[1] = 2;
+        break;
+
+        case G_B:
+            canalesHistograma[0] = 1;
+            canalesHistograma[1] = 2;
+        break;
+    }
+
+    calcHist(&imagen, 1, canalesHistograma, noArray(), hist, 2, bins, rangos);
+
+    // Dibujar el histograma
+    Point esquinaInfIzq(55, 429);
+    Point esquinaSupDer(473, 11);
+
+    int anchoHistograma = esquinaSupDer.x - esquinaInfIzq.x;
+    int altoHistograma = esquinaInfIzq.y - esquinaSupDer.y;
+
+    float anchoCelda = static_cast<float>(anchoHistograma)/celdas;
+    float altoCelda = static_cast<float>(altoHistograma)/celdas;
+
+    double min, max;
+    minMaxLoc(hist, &min, &max);
+
+    for(int x = 0; x < celdas; x++) {
+        for(int y = 0; y < celdas; y++) {
+            float valorHistograma = hist.at<float>(x, y);
+            int color = cvRound(255 - (valorHistograma*255/max));
+            rectangle(img, Point(esquinaInfIzq.x + x * anchoCelda, esquinaInfIzq.y - (y + 1) * altoCelda),
+                                          Point(esquinaInfIzq.x + (x + 1) * anchoCelda - 1, esquinaInfIzq.y - y * altoCelda - 1),
+                                          Scalar(color, color, color), FILLED);
+        }
+    }
+
+    if(guardar) {
+        crear_nueva(nres, img);
+    } else {
+        imshow("Histograma_2D", img);
+    }
+}
+
+//---------------------------------------------------------------------------
+
 void media_ponderada (int nf1, int nf2, int nueva, double peso)
 {
     assert(nf1>=0 && nf1<MAX_VENTANAS && foto[nf1].usada);

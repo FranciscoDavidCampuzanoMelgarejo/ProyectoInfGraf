@@ -45,6 +45,10 @@ struct ventana {
 enum tipo_herramienta {HER_PUNTO, HER_LINEA, HER_SELECCION, HER_RECTANGULO, HER_ELIPSE, HER_ARCO_IRIS,
                        HER_TRAZO, HER_RELLENADO, HER_SUAVIZADO, HER_COPIA};
 
+// ENUM canales_histograma2D
+//    Enumerado con todos los posibles pares de canales (3) para un histograma en 2D
+enum canales_histograma2D {R_G, R_B, G_B};
+
 
 ///////////////////////////////////////////////////////////////////
 /////////  VARIABLES PÚBLICAS                        //////////////
@@ -235,6 +239,10 @@ void balanceBlancos(int nfoto, int nres);
 void aplicarInpaint(int nfoto, int nres, Mat &mascara, int radio);
 // Aplicar el algoritmo de inpaint a la foto activa, usando una mascara con los cambios indicados
 // El resultado se guarda en una nueva foto
+
+void ver_histograma2D(int nfoto, int nres, int celdas, canales_histograma2D canales, bool guardar = false);
+// Mostrar el histograma de dos canales (R-G, R-B, G-B) indicando el numero de celdas (bins).
+// Guardar el resultado cuando guardar sea igual a true
 
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
