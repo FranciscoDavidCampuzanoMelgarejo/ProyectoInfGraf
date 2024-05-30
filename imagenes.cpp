@@ -260,6 +260,8 @@ void set_callback_foto (int nfoto, bool activo)
 static int downx, downy;
 // Posición inicial del ratón al pinchar sobre la imagen actual
 
+static bool fueraImagen = false;
+
 // Foto 'original' de la que se copian trozos a otras fotos con la herramienta COPIA
 static Mat* fotoOrigenCopia = nullptr;
 
@@ -711,8 +713,11 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
         foto[factual].orden= numpos++;
     }
     // 1.3. El ratón se sale de la ventana
-    if (x<0 || x>=foto[factual].img.size().width || y<0 || y>=foto[factual].img.size().height)
+    if (x<0 || x>=foto[factual].img.size().width || y<0 || y>=foto[factual].img.size().height) {
+        fueraImagen = true;
         return;
+    }
+
     // 1.4. Se inicia la pulsación del ratón
     if (event==EVENT_LBUTTONDOWN) {
         downx= x;
@@ -745,6 +750,11 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
         break;
 
     case HER_TRAZO:
+        if(fueraImagen) {
+            downx = x;
+            downy = y;
+            fueraImagen = false;
+        }
         if(event == EVENT_LBUTTONUP)
             cb_linea(factual, x, y);
         else if (event == EVENT_MOUSEMOVE && flags == EVENT_FLAG_LBUTTON) {
