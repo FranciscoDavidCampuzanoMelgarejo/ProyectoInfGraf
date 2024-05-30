@@ -1499,6 +1499,85 @@ void media_ponderada (int nf1, int nf2, int nueva, double peso)
 
 //---------------------------------------------------------------------------
 
+void ecualizar_histograma_local(int nfoto, int nres, int radio, bool guardar) {
+    // Convertir de BGR a Lab
+    Mat imagen = foto[nfoto].img;
+    Mat imagen_Lab;
+    cvtColor(imagen, imagen_Lab, COLOR_BGR2Lab);
+
+    // Obtener el canal L (luminosidad)
+    vector<Mat> canales_Lab;
+    split(imagen_Lab, canales_Lab);
+    Mat canal_L = canales_Lab[0];
+    Mat clon_canal_L = canal_L.clone(); //Guardar los las modificaciones
+
+    for(int y = 0; y < imagen.rows; y++) {
+        for(int x = 0; x < imagen.cols; x++) {
+            int x_inicio = std::max(0, x-radio);
+            int x_final = std::min(imagen.cols - 1, x+radio);
+            int y_inicio = std::max(0, y-radio);
+            int y_final = std::min(imagen.rows - 1, y + radio);
+
+            Rect region_rect(Point(x_inicio, y_inicio), Point(x_final + 1, y_final + 1)); // Asegurarse de incluir el pixel final
+            Mat region = canal_L(region_rect);
+
+            // Calcular el histograma
+            int canales[] = {0}; // Canal L
+            int bins[] = {256};
+            float rango[] = {0, 256};
+            const float* rangos[] = {rango};
+            Mat hist;
+            calcHist(&region, 1, canales, noArray(), hist, 1, bins, rangos);
+
+            hist /= sum(hist)[0]; // Normalizar el histograma
+
+            float percentil = 0.0;
+            int valor_pixel = canal_L.at<uchar>(y, x);
+            for(int i = 0; i <= valor_pixel; i++) {
+                percentil += hist.at<float>(i);
+            }
+
+            clon_canal_L.at<uchar>(y, x) = saturate_cast<uchar>(255*percentil);
+        }
+
+    }
+
+    clon_canal_L.copyTo(canal_L);
+    merge(canales_Lab, imagen_Lab);
+
+    Mat res;
+    cvtColor(imagen_Lab, res, COLOR_Lab2BGR);
+    if(guardar)
+        crear_nueva(nres, res);
+    else
+        imshow("Ecualizacion Local", res);
+}
+
+//---------------------------------------------------------------------------
+
+void ecualizar_histograma_local_CLAHE(int nfoto, int nres, int radio, bool guardar) {
+
+    Mat imagen_Lab;
+    cvtColor(foto[nfoto].img, imagen_Lab, COLOR_BGR2Lab);
+    vector<Mat> canales;
+    split(imagen_Lab, canales);
+
+    Ptr<CLAHE> clahe = createCLAHE();
+    clahe->setClipLimit(2.0);
+    clahe->setTilesGridSize(Size(2*radio+1, 2*radio+1));
+    clahe->apply(canales[0], canales[0]);
+
+    merge(canales, imagen_Lab);
+    Mat res;
+    cvtColor(imagen_Lab, res, COLOR_Lab2BGR);
+    if(guardar)
+        crear_nueva(nres, res);
+    else
+        imshow("Ecualizacion Local", res);
+}
+
+//---------------------------------------------------------------------------
+
 string Lt1(string cadena)
 {
     QString temp= QString::fromUtf8(cadena.c_str());

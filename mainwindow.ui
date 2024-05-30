@@ -580,6 +580,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionMatiz_Saturacion_Luminosidad"/>
     <addaction name="actionAjuste_Rojo_Verde_Azul"/>
     <addaction name="menuEcualizaci_n_global_histograma"/>
+    <addaction name="actionEcualizacion_local_histograma"/>
     <addaction name="actionInvertir"/>
     <addaction name="menuRotar"/>
     <addaction name="actionRotar_y_Reescalar"/>
@@ -1008,6 +1009,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionConjunta">
    <property name="text">
     <string>Conjunta</string>
+   </property>
+  </action>
+  <action name="actionEcualizacion_local_histograma">
+   <property name="text">
+    <string>Ecualizacion local histograma...</string>
    </property>
   </action>
  </widget>

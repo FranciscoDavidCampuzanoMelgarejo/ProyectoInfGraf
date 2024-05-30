@@ -251,6 +251,14 @@ void ecualizar_histograma_conjunta(int nfoto, int nres);
 // Ecualiza el histograma de la foto de forma conjunta. Para ello, se convierta la imagen a grises, se calcula
 // su histograma y se normaliza y, por ultimo, se utiliza una tabla LUT
 
+void ecualizar_histograma_local(int nfoto, int nres, int radio, bool guardar = false);
+// Por cada pixel de la foto se obtiene una region con un radio determinado. Se calcula su histograma y se obtiene
+// el percentil del valor del pixel A(x,y). El valor del nuevo pixel es 255*percentil.
+// Importante: Trabajar en el espacio de color Lab con el canal L (luminosidad)
+
+void ecualizar_histograma_local_CLAHE(int nfoto, int nres, int radio, bool guardar = false);
+// Aplicar el algoritmo CLAHE para ecualizar el histograma de forma local
+
 void ver_convolucion(int nfoto, int nres, Mat M, double mult, double suma, bool guardar = false);
 // Transformacion de convolucion
 

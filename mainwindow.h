@@ -111,6 +111,7 @@ private slots:
     void on_actionVer_histograma_2D_triggered();
     void on_actionIndependiente_triggered();
     void on_actionConjunta_triggered();
+    void on_actionEcualizacion_local_histograma_triggered();
 };
 
 extern MainWindow *w;
