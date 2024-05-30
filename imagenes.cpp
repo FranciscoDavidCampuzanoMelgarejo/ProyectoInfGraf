@@ -428,14 +428,52 @@ void cb_linea (int factual, int x, int y)
     if (difum_pincel==0)
         line(im, Point(downx, downy), Point(x,y), color_pincel, radio_pincel*2+1);
     else {
-        Mat res(im.size(), im.type(), color_pincel);
-        Mat cop(im.size(), im.type(), CV_RGB(0,0,0));
-        line(cop, Point(downx, downy), Point(x,y), CV_RGB(255,255,255), radio_pincel*2+1);
+        int tam = radio_pincel + difum_pincel;
+        int anchoRoi = abs(downx - x) + 2*tam+1;
+        int altoRoi = abs(downy - y) + 2*tam+1;
+
+        int coordenadaX, coordenadaY;
+        if(downx <= x)
+            coordenadaX = downx;
+        else
+            coordenadaX = x;
+
+        if(downy <= y)
+            coordenadaY = downy;
+        else
+            coordenadaY = y;
+        Rect roi(coordenadaX - tam, coordenadaY - tam, anchoRoi, altoRoi);
+
+        if(roi.x < 0) {
+            roi.width = roi.width + coordenadaX;
+            roi.x = 0;
+        }
+
+        if(roi.y < 0) {
+            roi.height = roi.height + coordenadaY;
+            roi.y = 0;
+        }
+
+        if(roi.x + roi.width >= im.cols) {
+            roi.width = im.cols - roi.x;
+        }
+
+        if(roi.y + roi.height >= im.rows) {
+            roi.height = im.rows - roi.y;
+        }
+
+        Point new_down(downx - roi.x, downy - roi.y);
+        Point new_end(x - roi.x, y - roi.y);
+
+        Mat trozo = im(roi);
+        Mat res(trozo.size(), im.type(), color_pincel);
+        Mat cop(trozo.size(), im.type(), CV_RGB(0,0,0));
+        line(cop, new_down, new_end, CV_RGB(255,255,255), radio_pincel*2+1);
         blur(cop, cop, Size(difum_pincel*2+1, difum_pincel*2+1));
         multiply(res, cop, res, 1.0/255.0);
         bitwise_not(cop, cop);
-        multiply(im, cop, im, 1.0/255.0);
-        im= res + im;
+        multiply(trozo, cop, trozo, 1.0/255.0);
+        trozo= res + trozo;
     }
     imshow(foto[factual].nombre, im);
     foto[factual].modificada= true;
