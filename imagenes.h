@@ -73,8 +73,8 @@ extern int difum_pincel;
 extern bool preguntar_guardar;
 // Al cerrar una imagen modificada, preguntar si se guarda o no
 
-// Al seleccionar la herramienta de copia, guardar
-// un clon de la imagen que se usa para copiar
+extern bool isCopiado;
+// Para saber si se ha copiado una foto o todavia no
 
 ///////////////////////////////////////////////////////////////////
 /////////  FUNCIONES DE MANEJO DE VENTANAS           //////////////

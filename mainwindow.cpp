@@ -111,6 +111,7 @@ void MainWindow::on_actionPunto_triggered()
 {
     herr_actual= HER_PUNTO;
     ui->toolButton_4->setChecked(true);
+    isCopiado = false;
 
 }
 
@@ -118,6 +119,7 @@ void MainWindow::on_actionLinea_triggered()
 {
     herr_actual= HER_LINEA;
     ui->toolButton_5->setChecked(true);
+    isCopiado = false;
 
 }
 
@@ -125,6 +127,7 @@ void MainWindow::on_actionSeleccionar_triggered()
 {
     herr_actual= HER_SELECCION;
     ui->toolButton_6->setChecked(true);
+    isCopiado = false;
 
 }
 
@@ -225,18 +228,21 @@ void MainWindow::on_toolButton_3_clicked()
 void MainWindow::on_toolButton_4_clicked()
 {
     herr_actual= HER_PUNTO;
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_5_clicked()
 {
     herr_actual= HER_LINEA;
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_6_clicked()
 {
     herr_actual= HER_SELECCION;
+    isCopiado = false;
 
 }
 
@@ -338,6 +344,7 @@ void MainWindow::on_actionImagen_media_triggered()
 void MainWindow::on_toolButton_7_clicked()
 {
     herr_actual = HER_RECTANGULO;
+    isCopiado = false;
 
 }
 
@@ -345,12 +352,14 @@ void MainWindow::on_actionRect_ngulo_triggered()
 {
     herr_actual = HER_RECTANGULO;
     ui->toolButton_7->setChecked(true);
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_8_clicked()
 {
     herr_actual = HER_ELIPSE;
+    isCopiado = false;
 
 }
 
@@ -358,6 +367,7 @@ void MainWindow::on_actionElipse_triggered()
 {
     herr_actual = HER_ELIPSE;
     ui->toolButton_8->setChecked(true);
+    isCopiado = false;
 
 }
 
@@ -423,6 +433,7 @@ void MainWindow::on_actionCapturar_de_v_deo_triggered()
 void MainWindow::on_toolButton_9_clicked()
 {
     herr_actual = HER_ARCO_IRIS;
+    isCopiado = false;
 
 }
 
@@ -430,6 +441,7 @@ void MainWindow::on_actionArco_Iris_triggered()
 {
     herr_actual = HER_ARCO_IRIS;
     ui->toolButton_9->setChecked(true);
+    isCopiado = false;
 
 }
 
@@ -541,6 +553,7 @@ void MainWindow::on_actionVer_informacion_triggered()
 void MainWindow::on_toolButton_10_clicked()
 {
     herr_actual = HER_TRAZO;
+    isCopiado = false;
 
 }
 
@@ -548,12 +561,14 @@ void MainWindow::on_actionTrazo_triggered()
 {
     herr_actual = HER_TRAZO;
     ui->toolButton_10->setChecked(true);
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_11_clicked()
 {
     herr_actual = HER_RELLENADO;
+    isCopiado = false;
 
 }
 
@@ -561,12 +576,14 @@ void MainWindow::on_actionRellenar_triggered()
 {
     herr_actual = HER_RELLENADO;
     ui->toolButton_11->setChecked(true);
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_12_clicked()
 {
     herr_actual = HER_SUAVIZADO;
+    isCopiado = false;
 
 }
 
@@ -574,18 +591,21 @@ void MainWindow::on_actionSuavizado_triggered()
 {
     herr_actual = HER_SUAVIZADO;
     ui->toolButton_12->setChecked(true);
+    isCopiado = false;
 
 }
 
 void MainWindow::on_toolButton_13_clicked()
 {
     herr_actual = HER_COPIA;
+    isCopiado = false;
 }
 
 void MainWindow::on_actionCopiar_triggered()
 {
     herr_actual = HER_COPIA;
     ui->toolButton_13->setChecked(true);
+    isCopiado = false;
 }
 
 void MainWindow::on_actionAjuste_Rojo_Verde_Azul_triggered()

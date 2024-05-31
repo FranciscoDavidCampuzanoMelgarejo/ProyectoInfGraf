@@ -28,6 +28,8 @@ bool preguntar_guardar= true;
 
 static int numpos= 0; // Número actual en el orden de posición de las ventanas
 
+bool isCopiado = false;
+
 
 // FUNCIONES AUXILIARES
 void ajustarROICopia(Rect &roi, int &posx, int &posy, int factual) {
@@ -268,10 +270,7 @@ static int downx, downy;
 static bool fueraImagen = false;
 
 // Foto 'original' de la que se copian trozos a otras fotos con la herramienta COPIA
-static int fotoOrigenCopia = -1;
-
-// Para saber si se ha copiado una foto o todavia no
-static bool isCopiado = false;
+static int fotoOrigenCopia;
 
 // Coordenadas (x,y) del click que se hizo en la foto cuyos trozos se van a copiar a otras fotos
 static int xOrigen, yOrigen;
