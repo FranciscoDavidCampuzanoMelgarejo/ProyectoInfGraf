@@ -111,21 +111,21 @@ void MainWindow::on_actionPunto_triggered()
 {
     herr_actual= HER_PUNTO;
     ui->toolButton_4->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionLinea_triggered()
 {
     herr_actual= HER_LINEA;
     ui->toolButton_5->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionSeleccionar_triggered()
 {
     herr_actual= HER_SELECCION;
     ui->toolButton_6->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_2_clicked()
@@ -225,19 +225,19 @@ void MainWindow::on_toolButton_3_clicked()
 void MainWindow::on_toolButton_4_clicked()
 {
     herr_actual= HER_PUNTO;
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_5_clicked()
 {
     herr_actual= HER_LINEA;
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_6_clicked()
 {
     herr_actual= HER_SELECCION;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionInvertir_triggered()
@@ -338,27 +338,27 @@ void MainWindow::on_actionImagen_media_triggered()
 void MainWindow::on_toolButton_7_clicked()
 {
     herr_actual = HER_RECTANGULO;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionRect_ngulo_triggered()
 {
     herr_actual = HER_RECTANGULO;
     ui->toolButton_7->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_8_clicked()
 {
     herr_actual = HER_ELIPSE;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionElipse_triggered()
 {
     herr_actual = HER_ELIPSE;
     ui->toolButton_8->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionCopiar_a_nueva_triggered()
@@ -423,14 +423,14 @@ void MainWindow::on_actionCapturar_de_v_deo_triggered()
 void MainWindow::on_toolButton_9_clicked()
 {
     herr_actual = HER_ARCO_IRIS;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionArco_Iris_triggered()
 {
     herr_actual = HER_ARCO_IRIS;
     ui->toolButton_9->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionAjuste_lineal_triggered()
@@ -541,40 +541,40 @@ void MainWindow::on_actionVer_informacion_triggered()
 void MainWindow::on_toolButton_10_clicked()
 {
     herr_actual = HER_TRAZO;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionTrazo_triggered()
 {
     herr_actual = HER_TRAZO;
     ui->toolButton_10->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_11_clicked()
 {
     herr_actual = HER_RELLENADO;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionRellenar_triggered()
 {
     herr_actual = HER_RELLENADO;
     ui->toolButton_11->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_12_clicked()
 {
     herr_actual = HER_SUAVIZADO;
-    liberar_copia();
+
 }
 
 void MainWindow::on_actionSuavizado_triggered()
 {
     herr_actual = HER_SUAVIZADO;
     ui->toolButton_12->setChecked(true);
-    liberar_copia();
+
 }
 
 void MainWindow::on_toolButton_13_clicked()

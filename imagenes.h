@@ -273,10 +273,6 @@ string Lt1(string cadena);
 
 // FUNCIONES AUXILIARES
 
-void liberar_copia();
-// Liberar de memoria la copia guardada de la foto que ha sido seleccionada
-// con la herramienta de COPIA
-
 void centrarFourier(Mat &fourier);
 // Centrar la transformadad de Fourier. Consiste en dividir la imagen en 4 cuadrantes (rectangulos), e intercambiar los
 // cuadrantes diagonalmente

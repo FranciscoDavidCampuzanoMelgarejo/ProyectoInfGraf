@@ -33,24 +33,29 @@ static int numpos= 0; // Número actual en el orden de posición de las ventanas
 void ajustarROICopia(Rect &roi, int &posx, int &posy, int factual) {
     Mat imagen = foto[factual].img;
     if(roi.x < 0) {
+        roi.width = roi.width + roi.x;
         posx = posx + roi.x;
         roi.x = 0;
     }
 
     if(roi.y < 0) {
+        roi.height = roi.height + roi.y;
         posy = posy + roi.y;
         roi.y = 0;
     }
 
     if(roi.x + roi.width > imagen.cols) {
-        posx = roi.x - (imagen.cols - roi.width) + posx;
-        roi.x = imagen.cols - roi.width;
+        roi.width = imagen.cols - roi.x;
     }
 
     if(roi.y + roi.height > imagen.rows) {
-        posy = roi.y - (imagen.rows - roi.height) + posy;
-        roi.y = imagen.rows - roi.height;
+        roi.height = imagen.rows - roi.y;
     }
+}
+
+void reestructurarROI(Rect &roi, int ancho, int alto) {
+    roi.width = ancho;
+    roi.height = alto;
 }
 
 
@@ -263,7 +268,7 @@ static int downx, downy;
 static bool fueraImagen = false;
 
 // Foto 'original' de la que se copian trozos a otras fotos con la herramienta COPIA
-static Mat* fotoOrigenCopia = nullptr;
+static int fotoOrigenCopia = -1;
 
 // Para saber si se ha copiado una foto o todavia no
 static bool isCopiado = false;
@@ -668,9 +673,9 @@ void cb_copia(int factual, int x, int y) {
         xOrigen = x;
         yOrigen = y;
         isCopiado = true;
-        fotoOrigenCopia = new Mat(foto[factual].img.clone());
+        fotoOrigenCopia = factual;
     } else {
-        int suavizado = (difum_pincel % 2 == 0) ? difum_pincel+1 : difum_pincel;
+        int suavizado = std::min(31, difum_pincel*2+1);
         int posxOrigen, posyOrigen;
         int posxCopia, posyCopia;
         posxOrigen = posyOrigen = posxCopia = posyCopia = radio_pincel;
@@ -678,10 +683,21 @@ void cb_copia(int factual, int x, int y) {
         Rect roiCopia(x - radio_pincel, y - radio_pincel, 2*radio_pincel+1, 2*radio_pincel+1);
 
         // Ajustar los ROI
-        ajustarROICopia(roiOrigen, posxOrigen, posyOrigen, factual);
+        ajustarROICopia(roiOrigen, posxOrigen, posyOrigen, fotoOrigenCopia);
         ajustarROICopia(roiCopia, posxCopia, posyCopia, factual);
 
-        Mat origen = (*fotoOrigenCopia)(roiOrigen).clone();
+        int anchoMinimo = std::min(roiOrigen.size().width, roiCopia.size().width);
+        int altoMinimo = std::min(roiOrigen.size().height, roiCopia.size().height);
+
+        // Reestructurar los roi
+        if(roiOrigen.size().width > anchoMinimo || roiOrigen.size().height > altoMinimo) {
+            reestructurarROI(roiOrigen, anchoMinimo, altoMinimo);
+        }
+        if(roiCopia.size().width > anchoMinimo || roiCopia.size().height > altoMinimo) {
+            reestructurarROI(roiCopia, anchoMinimo, altoMinimo);
+        }
+
+        Mat origen = foto[fotoOrigenCopia].img(roiOrigen).clone();
         blur(origen, origen, Size(suavizado, suavizado));
 
         Mat destino = foto[factual].img(roiCopia);
@@ -690,9 +706,11 @@ void cb_copia(int factual, int x, int y) {
 
         multiply(origen, mascara, origen, 1.0/255.0);
         bitwise_not(mascara, mascara);
+
         multiply(destino, mascara, destino, 1.0/255.0);
         destino = destino + origen;
         foto[factual].modificada = true;
+
     }
     imshow(foto[factual].nombre, foto[factual].img);
 }
@@ -724,8 +742,8 @@ void callback (int event, int x, int y, int flags, void *_nfoto)
         downy= y;
     }
 
-    if(fotoOrigenCopia != nullptr && herr_actual != HER_COPIA) {
-        liberar_copia();
+    if(fotoOrigenCopia != -1 && herr_actual != HER_COPIA) {
+        isCopiado = false;
     }
 
     // 2. Según la herramienta actual
@@ -1630,18 +1648,6 @@ string Lt1(string cadena)
 {
     QString temp= QString::fromUtf8(cadena.c_str());
     return temp.toLatin1().data();
-}
-
-//---------------------------------------------------------------------------
-
-void liberar_copia() {
-    if(fotoOrigenCopia != nullptr) {
-        qDebug("Liberando la copia");
-        delete fotoOrigenCopia;
-        fotoOrigenCopia = nullptr;
-    }
-
-    isCopiado = false;
 }
 
 //---------------------------------------------------------------------------
