@@ -1212,15 +1212,15 @@ void ver_mat_sat_lum(int nfoto, double sat, double lum, int matiz, bool guardar)
 
 //---------------------------------------------------------------------------
 
-void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_canales, bool guardar) {
+void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, bool guardar) {
     Mat imagen = foto[nfoto].img.clone();
-    Mat canales[num_canales];
+    vector<Mat> canales;
 
     split(imagen, canales);
-    for(int i = 0; i < num_canales; i++) {
+    for(int i = 0; i < canales.size(); i++) {
         canales[i] = canales[i].mul(producto[i]) + suma[i];
     }
-    merge(canales, num_canales, imagen);
+    merge(canales, imagen);
 
     if(guardar) {
         imagen.copyTo(foto[nfoto].img);

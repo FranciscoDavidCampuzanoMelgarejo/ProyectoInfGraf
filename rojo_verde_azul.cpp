@@ -21,12 +21,12 @@ rojo_verde_azul::~rojo_verde_azul()
 
 void rojo_verde_azul::actualizarCanal(int canal, int valor) {
     this->sumaCanales[canal] = valor;
-    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales, 3);
+    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales);
 }
 
 void rojo_verde_azul::actualizarCanal(int canal, double valor) {
     this->productoCanales[canal] = valor;
-    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales, 3);
+    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales);
 }
 
 
@@ -108,7 +108,7 @@ void rojo_verde_azul::on_azulSpinMult_valueChanged(double arg1)
 
 void rojo_verde_azul::on_rojo_verde_azul_accepted()
 {
-    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales, 3, true);
+    ajustar_rojo_verde_azul(this->nfoto, this->productoCanales, this->sumaCanales, true);
 }
 
 void rojo_verde_azul::on_rojo_verde_azul_rejected()

@@ -15,6 +15,7 @@ rotar_reescalar::rotar_reescalar(int num_foto, QWidget *parent) :
 
 rotar_reescalar::~rotar_reescalar()
 {
+    set_callback_foto(nfoto, true);
     delete ui;
 }
 
@@ -35,4 +36,15 @@ void rotar_reescalar::on_doubleSpinBox_valueChanged(double arg1)
 {
     int angulo = ajustarAngulo(ui->dial->value());
     rotar_y_reescalar(this->nfoto, static_cast<double>(angulo), arg1);
+}
+
+void rotar_reescalar::on_rotar_reescalar_rejected()
+{
+    mostrar(nfoto);
+}
+
+void rotar_reescalar::on_rotar_reescalar_accepted()
+{
+    int angulo = ajustarAngulo(ui->dial->value());
+    rotar_y_reescalar(nfoto, static_cast<double>(angulo), ui->doubleSpinBox->value(), true);
 }

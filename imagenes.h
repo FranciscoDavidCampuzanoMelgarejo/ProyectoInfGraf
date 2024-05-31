@@ -202,7 +202,7 @@ Mat op_mat_sat_lum(Mat img, double sat, double lum, int matiz);
 void ver_mat_sat_lum(int nfoto, double sat, double lum, int matiz, bool guardar = false);
 // Aplica la transformacion de matiz/saturacion/luminosidad
 
-void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, int num_canales, bool guardar = false);
+void ajustar_rojo_verde_azul(int nfoto, double* producto, int* suma, bool guardar = false);
 // A cada uno de los tres canales de la foto (RGB), lo multiplica por una cierta cantidad y le suma otra
 // de forma independiente
 

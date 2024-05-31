@@ -20,6 +20,10 @@ private slots:
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
+    void on_rotar_reescalar_rejected();
+
+    void on_rotar_reescalar_accepted();
+
 private:
     Ui::rotar_reescalar *ui;
 

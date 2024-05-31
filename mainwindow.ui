@@ -977,7 +977,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionPerfilado">
    <property name="text">
-    <string>Perfilado</string>
+    <string>Perfilado...</string>
    </property>
   </action>
   <action name="actionTexto">
@@ -997,7 +997,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionInpaint">
    <property name="text">
-    <string>Inpaint</string>
+    <string>Inpaint...</string>
    </property>
   </action>
   <action name="actionVer_histograma_2D">

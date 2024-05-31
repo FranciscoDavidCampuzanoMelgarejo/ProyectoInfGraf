@@ -38,7 +38,7 @@ void dialogo_ecualizacion_local::on_radioButton_2_clicked()
 {
     if(this->ec_estandar) {
         this->ec_estandar = false;
-        ecualizar_histograma_local_CLAHE(nfoto, nres, this->ui->spinBox->value());
+        ecualizar_histograma_local_CLAHE(nfoto, nres, (this->ui->spinBox->maximum() - this->ui->spinBox->value()));
     }
 }
 
@@ -47,7 +47,7 @@ void dialogo_ecualizacion_local::on_pushButton_clicked()
     if(this->ec_estandar)
         ecualizar_histograma_local(nfoto, nres, this->ui->spinBox->value());
     else
-        ecualizar_histograma_local_CLAHE(nfoto, nres, this->ui->spinBox->value());
+        ecualizar_histograma_local_CLAHE(nfoto, nres, (this->ui->spinBox->maximum() - this->ui->spinBox->value()));
 }
 
 void dialogo_ecualizacion_local::on_dialogo_ecualizacion_local_rejected()
@@ -60,5 +60,5 @@ void dialogo_ecualizacion_local::on_dialogo_ecualizacion_local_accepted()
     if(this->ec_estandar)
         ecualizar_histograma_local(nfoto, nres, this->ui->spinBox->value(), true);
     else
-        ecualizar_histograma_local_CLAHE(nfoto, nres, this->ui->spinBox->value(), true);
+        ecualizar_histograma_local_CLAHE(nfoto, nres, (this->ui->spinBox->maximum() - this->ui->spinBox->value()), true);
 }

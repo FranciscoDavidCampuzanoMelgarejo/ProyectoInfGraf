@@ -9,11 +9,12 @@ Perfilado::Perfilado(int num_foto, QWidget *parent) :
     ui->setupUi(this);
     this->nfoto = num_foto;
     this->radio = 1;
-    this->porcentaje = 0.0;
+    this->porcentaje = 0.1;
 
     set_callback_foto(nfoto, false);
     if (parent)
         move(parent->x()+DESP_X_HIJO, parent->y()+DESP_Y_HIJO);
+    ver_perfilado(nfoto, radio, porcentaje);
 }
 
 Perfilado::~Perfilado()
@@ -24,7 +25,7 @@ Perfilado::~Perfilado()
 
 void Perfilado::on_horizontalSlider_valueChanged(int value)
 {
-    radio = (value % 2 == 0) ? value + 1 : value;
+    radio = 2*value + 1;
     ver_perfilado(nfoto, radio, porcentaje);
 }
 
