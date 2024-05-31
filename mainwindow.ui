@@ -372,7 +372,11 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="text">
-     <string>ArcoIris</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="recursos.qrc">
+      <normaloff>:/imagenes/arco-iris.png</normaloff>:/imagenes/arco-iris.png</iconset>
     </property>
     <property name="checkable">
      <bool>true</bool>

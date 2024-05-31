@@ -48,5 +48,6 @@
         <file>imagenes/Histograma_G-B.png</file>
         <file>imagenes/Histograma_R-B.png</file>
         <file>imagenes/Histograma_R-G.png</file>
+        <file>imagenes/arco-iris.png</file>
     </qresource>
 </RCC>

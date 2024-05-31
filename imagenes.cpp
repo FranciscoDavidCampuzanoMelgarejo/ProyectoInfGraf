@@ -596,18 +596,17 @@ void cb_rellenado(int factual, int x, int y, bool isAplicado = false) {
     double factorTolerancia = radio_pincel / 120.0;
     double factorOpacidad = difum_pincel / 120.0;
 
-    Scalar lowDiff = Scalar::all(10 * factorTolerancia);
-    Scalar upDiff = Scalar::all(30 * factorTolerancia);
+    Scalar lowDiff = Scalar::all(factorTolerancia * 90);
+    Scalar upDiff = Scalar::all(factorTolerancia * 90);
 
     Mat imagen = foto[factual].img;
-    //Mat mask(imagen.rows + 2, imagen.cols + 2, CV_8UC1, Scalar::all(0));
     Mat imagenRelleno = imagen.clone();
     if(!isAplicado) {
-        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff);
+        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff, FLOODFILL_FIXED_RANGE);
         addWeighted(imagen, factorOpacidad, imagenRelleno, (1.0 - factorOpacidad), 0, imagenRelleno);
         imshow(foto[factual].nombre, imagenRelleno);
     } else {
-        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff);
+        floodFill(imagenRelleno, Point(x, y), color_pincel, nullptr, lowDiff, upDiff, FLOODFILL_FIXED_RANGE);
         addWeighted(imagen, factorOpacidad, imagenRelleno, (1.0 - factorOpacidad), 0, imagen);
         imshow(foto[factual].nombre, imagen);
         foto[factual].modificada = true;
@@ -618,7 +617,8 @@ void cb_rellenado(int factual, int x, int y, bool isAplicado = false) {
 void cb_suavizado(int factual, int x, int y) {
     Mat imagen = foto[factual].img;
 
-    int suavizado = (difum_pincel % 2 == 0) ? difum_pincel+1 : difum_pincel;
+    int suavizado = std::min(31, difum_pincel*2+1);
+    qDebug() << "Suavizado: " << suavizado;
 
     Rect roi(x - radio_pincel, y - radio_pincel, 2*radio_pincel+1, 2*radio_pincel+1);
 
